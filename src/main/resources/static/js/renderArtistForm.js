@@ -19,18 +19,18 @@ export default function renderArtistForm(artist = {}) {
             >
           </label>
           <label class="form-label mt-4">
-            Description:
-            <textarea name="description" class="form-control"
-              required minlength="2" placeholder="Description"
-            >${description || ''}</textarea>
-          </label>
-          <label class="form-label mt-4">
             ${id ? 'Change image:' : 'Choose an image:'}
             <img class="preview d-block mb-3 mt-lg-3 mb-lg-0 float-lg-end"
               src="${base64image || '/images/placeHolderImage.jpg'}">
             <input type="file" class="form-control"
               ${id ? '' : 'required'} accept=".jpg,.jpeg">
             <input type="hidden" name="base64image" value="${base64image || ''}">
+          </label>
+          <label class="form-label mt-4">
+            Description:
+            <textarea name="description" class="form-control"
+              required minlength="2" placeholder="Description"
+            >${description || ''}</textarea>
           </label>
           <button type="submit" class="btn btn-secondary my-3 float-end">
             ${id ? 'Make changes' : 'Add artist'}
