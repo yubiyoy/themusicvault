@@ -2,7 +2,9 @@ import { renderArtists, renderArtist } from './renderArtists.js';
 import renderArtistForm from './renderArtistForm.js';
 import renderAboutFromReadMe from './renderAboutFromReadMe.js';
 import render404 from './render404.js';
+import setActiveMenuChoice from './utils/setActiveMenuChoice.js';
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
+
 
 // Display different 'pages' depending on hash
 // (this is an Single Page Applicaiton so a 'page change'
@@ -33,6 +35,7 @@ export default function displayPage() {
   else {
     html = render404();
   }
+  setActiveMenuChoice();
   closeHamburgerBar();
   document.querySelector('main').innerHTML = html;
 }
