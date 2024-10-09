@@ -2,6 +2,7 @@ import fileToBase64 from "./utils/fileToBase64.js";
 import formDataCollector from "./utils/formDataCollector.js";
 import { post, put } from './utils/fetchHelpers.js'
 
+// Render a form for adding or editing artist info
 export default function renderArtistForm(artist = {}) {
   let { id, name, description, base64image } = artist;
   return `

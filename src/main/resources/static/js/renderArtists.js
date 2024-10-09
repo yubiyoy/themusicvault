@@ -1,6 +1,7 @@
 import displayPage from './displayPage.js';
 import { remove } from './utils/fetchHelpers.js';
 
+// Render a list of artists
 export function renderArtists(artists) {
   return `
     <div class="row">
@@ -13,6 +14,7 @@ export function renderArtists(artists) {
   `;
 }
 
+// Render one artist
 export function renderArtist({ id, name, description, base64image }, short) {
   let html = `<div class="card mb-4 artist ${short ? 'short' : ''}" data-id="${id}">
     <a href="${short ? '#artist-info-' + id : '#'}">
@@ -39,7 +41,7 @@ export function renderArtist({ id, name, description, base64image }, short) {
   return short ? html : /*html*/`<div class="row"><div class="col">${html}</div></div>`;
 }
 
-// remove an artist
+// Remove an artist
 document.body.addEventListener('click', async event => {
   const removeArtistButton = event.target.closest('button.removeArtist');
   if (!removeArtistButton) { return; }
@@ -54,7 +56,7 @@ document.body.addEventListener('click', async event => {
   displayPage();
 });
 
-// edit an artist
+// Edit an artist
 document.body.addEventListener('click', async event => {
   const editArtistButton = event.target.closest('button.editArtist');
   if (!editArtistButton) { return; }

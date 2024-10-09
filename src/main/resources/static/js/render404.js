@@ -1,4 +1,6 @@
 export default function render404() {
+
+  // Render a 404 page
   return `
     <div class="row">
       <div class="col">

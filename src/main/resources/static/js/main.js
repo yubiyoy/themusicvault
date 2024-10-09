@@ -2,12 +2,6 @@ import { get } from './utils/fetchHelpers.js';
 import renderNavBar from './renderNavbar.js';
 import displayPage from './displayPage.js';
 
-// NOTE:
-// Several JS files in this project has 
-// a lot HTML-snippets inside template literals
-// by working in Visual Studio Code and installing the extension
-// leet-html the html will get nice syntax highlighting.
-
 // Do not add comma when converting arrays to strings
 Array.prototype.toString = function () { return this.join(''); }
 

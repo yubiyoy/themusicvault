@@ -3,7 +3,9 @@ import renderArtistForm from './renderArtistForm.js';
 import render404 from './render404.js';
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
 
-// display different 'pages' depending on hash
+// Display different 'pages' depending on hash
+// (this is an Single Page Applicaiton so a 'page change'
+//  corresponds to changing the content of the main element)
 export default function displayPage() {
   const artists = globalThis.artists;
   const choice = location.hash.replaceAll('#', '');

@@ -1,5 +1,6 @@
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
 
+// Render the navbar with menu choices + toggle for edit mode
 export default function renderNavBar() {
 
   const choices = {
@@ -37,7 +38,7 @@ export default function renderNavBar() {
   `;
 }
 
-// toggle edit mode
+// Toggle edit mode
 document.body.addEventListener('click', event => {
   const toggleEditMode = event.target.closest('li.toggle-edit-mode');
   if (!toggleEditMode) { return; }

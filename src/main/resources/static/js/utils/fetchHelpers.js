@@ -1,3 +1,5 @@
+// Helper functions to use fetch with all types of REST routes
+
 const restBasePath = '/api/';
 
 export async function get(entity, sort = 'name', size = 1000) {
