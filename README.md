@@ -1,5 +1,16 @@
 # Jacob Koberstein's Web Application
 
+### My workflow
+* I work in one GitHub-hosted git repository with both the Spring-based backend and the Vanilla JS based frontend. The frontend files are in src/main/resources/static and I have configured Spring to serve the REST-api on the basePath /api.
+* I use GitHub Desktop to commit my changes to the git repository.
+* I open the whole repository in IntelliJ Idea.
+* I open the frontend folder (src/main/resources/static) with "Open folder" in VSC.
+* I have installed the VSC extension Thunder Client in VSC - so that I can test my REST routes.
+* I have installed the VSC extension leet-html in VSC and thus template literal strings containing HTML in my JS code gets highlighted nicely.
+* I use the CSS framework Bootstrap - which saves how much own CSS I have to write and helps me make the frontend application responsive.
+* I use vanilla JS and try to write in a modern style with the code divided into different ES-modules.
+* I use a local instance of MySQL and my database name is jacobWebApp. I save a database dump in the repo, so that I can restore the database if I need to and others can install it. It is stored in src/main/resources/db-dump.
+
 ### Articles I read to help me get started
 
 #### Sprint Data REST - build REST routes without Controllers & Services
