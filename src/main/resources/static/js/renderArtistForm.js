@@ -25,7 +25,7 @@ export default function renderArtistForm(artist = {}) {
             >${description || ''}</textarea>
           </label>
           <label class="form-label mt-4">
-            ${id ? 'Change image:' : 'Choose image:'}
+            ${id ? 'Change image:' : 'Choose an image:'}
             <img class="preview d-block mb-3 mt-lg-3 mb-lg-0 float-lg-end"
               src="${base64image || '/images/placeHolderImage.jpg'}">
             <input type="file" class="form-control"

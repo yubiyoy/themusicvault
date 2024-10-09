@@ -1,9 +1,8 @@
+import './utils/followExternalLinksInNewTab.js';
+import './utils/noCommasOnArrayToString.js';
 import { get } from './utils/fetchHelpers.js';
 import renderNavBar from './renderNavbar.js';
 import displayPage from './displayPage.js';
-
-// Do not add comma when converting arrays to strings
-Array.prototype.toString = function () { return this.join(''); }
 
 // Start the application
 async function start() {
