@@ -9,7 +9,7 @@
 * I have installed the VSC extension leet-html in VSC and thus template literal strings containing HTML in my JS code gets highlighted nicely.
 * I use the CSS framework Bootstrap - which saves how much own CSS I have to write and helps me make the frontend application responsive.
 * I use vanilla JS and try to write in a modern style with the code divided into different ES-modules.
-* I use a local instance of MySQL and my database name is jacobWebApp. I save a database dump in the repo, so that I can restore the database if I need to and others can install it. It is stored in src/main/resources/db-dump.
+* I use a local instance of MySQL and my database name is jacobWebApp. I save a database dump of the database as an sql file in the repo, so that I can restore the database if I need to and others can install it. It is stored in src/main/resources/db-dump.
 
 ### Articles I read to help me get started
 
