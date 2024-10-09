@@ -1,0 +1,11 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Protest+Strike&family=Spicy+Rice&display=swap');
+
+/* Import our css files */
+@import 'variables.css';
+@import 'basic.css';
+@import 'sticky-footer.css';
+@import 'bootstrap-mods.css';
+@import 'artist.css';
+@import 'form.css';
+@import 'edit-mode.css';

@@ -1,0 +1,21 @@
+.btn {
+  font-family: var(--bs-body-font-family);
+}
+
+.navbar,
+.btn-secondary {
+  background-color: var(--header-footer-bg-color);
+}
+
+.navbar-brand {
+  font-family: 'Spicy Rice';
+  font-size: 30px;
+}
+
+.btn-secondary:hover {
+  background-color: var(--header-footer-bg-color);
+}
+
+.nav-link {
+  font-size: 18px !important;
+}

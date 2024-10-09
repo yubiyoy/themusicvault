@@ -1,0 +1,11 @@
+.edit-mode-on {
+  display: none;
+}
+
+body.edit-mode .edit-mode-on {
+  display: block;
+}
+
+body.edit-mode .edit-mode-off {
+  display: none;
+}

@@ -1,0 +1,28 @@
+/* Box sizing */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+  color: #fff;
+}
+
+main {
+  font-family: 'Merriweather';
+}
+
+footer {
+  background-color: var(--header-footer-bg-color)
+}
+
+img[src="/images/404.png"] {
+  width: 100%;
+}

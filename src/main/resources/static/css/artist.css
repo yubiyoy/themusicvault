@@ -1,0 +1,41 @@
+.artist img {
+  object-fit: cover;
+  aspect-ratio: 30/9;
+  object-position: 50% 40%;
+}
+
+.artist.short img {
+  object-position: 50% 50%;
+  aspect-ratio: 16/9;
+}
+
+.artist.short .description p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist .card-title {
+  font-family: 'Protest Strike';
+  font-size: 24px;
+}
+
+.description {
+  min-height: 72px;
+}
+
+@media (min-width: 1200px) {
+  .artist:not(.short) .description {
+    columns: 2;
+    column-gap: 30px;
+    line-height: 160%;
+    font-size: 18px;
+  }
+
+  .artist .card-title {
+    font-size: 30px;
+  }
+}

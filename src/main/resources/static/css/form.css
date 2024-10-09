@@ -1,0 +1,29 @@
+label,
+input {
+  font-family: var(--bs-font-sans-serif);
+}
+
+label {
+  width: 100%;
+}
+
+textarea {
+  height: 20vh;
+}
+
+img.preview {
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  aspect-ratio: 16/9;
+}
+
+@media (min-width: 992px) {
+  img.preview {
+    width: 40%;
+  }
+
+  input[type="file"] {
+    width: 50%;
+  }
+}
