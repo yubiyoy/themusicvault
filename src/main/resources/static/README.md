@@ -40,7 +40,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/FileReader
 
 (I use the FileReader to convert images to base64 - preparing them for upload.)
 
-### Tool for bas64-encoding images
+### Tool for base64-encoding images
 Until I got the image upload in place I used this online tool for conversion to base64 of jpgs:
 https://www.base64-image.de
 
