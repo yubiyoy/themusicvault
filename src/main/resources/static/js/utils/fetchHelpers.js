@@ -1,7 +1,7 @@
 const restBasePath = '/api/';
 
-export async function get(entity, size = 1000) {
-  const response = await fetch(`${restBasePath}${entity}?size=${size}`);
+export async function get(entity, sort = 'name', size = 1000) {
+  const response = await fetch(`${restBasePath}${entity}?size=${size}&sort=${sort}`);
   const data = await response.json();
   return data._embedded[entity];
 }

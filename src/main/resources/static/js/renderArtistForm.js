@@ -70,6 +70,8 @@ document.body.addEventListener('submit', async event => {
       globalThis.artists.find(artist => artist.id === +id),
       artistFromDb
     );
+  // sort artists by name
+  globalThis.artists.sort((a, b) => a.name > b.name ? 1 : -1);
   // navigate to the artist page
   location.hash = "#";
   // scroll the artist into view
