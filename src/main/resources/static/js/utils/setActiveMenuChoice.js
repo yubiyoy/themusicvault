@@ -1,5 +1,5 @@
 // Set the active menu item (corresponding to the url hash)
-export default function setActiveMenu() {
+export default function setActiveMenuChoice() {
   // remove the css class active on all nav links
   const navLinks = [...document.querySelectorAll('.navbar li a')];
   navLinks.forEach(navLink => navLink.classList.remove('active'));
@@ -8,6 +8,7 @@ export default function setActiveMenu() {
   if (hash.includes('artist-info')) { hash = ''; }
   const activeNavLink = navLinks
     .find(navLink => navLink.getAttribute('href').includes(hash));
+  if (!activeNavLink) { return; }
   activeNavLink.classList.add('active');
   console.log(location.hash.split('-')[0], activeNavLink);
 }
