@@ -5,9 +5,9 @@ export default function renderNavBar() {
 
   const choices = {
     'Artists': '#',
-    'Records': '#records',
+    'Albums': '#albums',
     'Add an artist': '#add-artist',
-    'Add a record': '#add-record',
+    'Add an album': '#add-album',
     'About': '#about'
   };
 
