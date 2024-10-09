@@ -10,5 +10,4 @@ export default function setActiveMenuChoice() {
     .find(navLink => navLink.getAttribute('href').includes(hash));
   if (!activeNavLink) { return; }
   activeNavLink.classList.add('active');
-  console.log(location.hash.split('-')[0], activeNavLink);
 }

@@ -38,4 +38,6 @@ export default function displayPage() {
   setActiveMenuChoice();
   closeHamburgerBar();
   document.querySelector('main').innerHTML = html;
+  // scroll to the top of page
+  setTimeout(() => window.scrollTo(0, 0), 200);
 }
