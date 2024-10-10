@@ -1,4 +1,5 @@
 import './utils/followExternalLinksInNewTab.js';
+import './utils/applyPopStateOnInternalLinks.js';
 import './utils/noCommasOnArrayToString.js';
 import { get } from './utils/fetchHelpers.js';
 import renderNavBar from './renderNavbar.js';
@@ -18,9 +19,9 @@ async function start() {
   renderNavBar();
   // Get a list of all artists and store in globalThis
   globalThis.artists = await get('artists');
-  // Display 'page' depending on hash
+  // Display 'page' depending url - SPA frontend routing
   displayPage();
-  window.onhashchange = () => displayPage();
+  window.addEventListener('popstate', displayPage);
 }
 
 start();

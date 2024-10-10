@@ -9,3 +9,7 @@ body.edit-mode .edit-mode-on {
 body.edit-mode .edit-mode-off {
   display: none;
 }
+
+.toggle-edit-mode {
+  cursor: pointer;
+}

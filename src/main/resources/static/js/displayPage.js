@@ -6,12 +6,13 @@ import setActiveMenuChoice from './utils/setActiveMenuChoice.js';
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
 
 
-// Display different 'pages' depending on hash
+// Display different 'pages' depending on the url / location path
 // (this is an Single Page Applicaiton so a 'page change'
 //  corresponds to changing the content of the main element)
 export default function displayPage() {
   const artists = globalThis.artists;
-  const choice = location.hash.replaceAll('#', '');
+  const choice = location.pathname.replace('/', '');
+  console.log(choice);
   let html;
   if (choice === '') {
     html = renderArtists(artists);

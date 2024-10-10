@@ -4,11 +4,11 @@ import closeHamburgerBar from './utils/closeHamburgerBar.js';
 export default function renderNavBar() {
 
   const choices = {
-    'Artists': '#',
-    'Albums': '#albums',
-    'Add an artist': '#add-artist',
-    'Add an album': '#add-album',
-    'About': '#about'
+    'Artists': '/',
+    'Albums': '/albums',
+    'Add an artist': '/add-artist',
+    'Add an album': '/add-album',
+    'About': '/about'
   };
 
   document.querySelector('header').innerHTML = `
@@ -23,14 +23,14 @@ export default function renderNavBar() {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            ${Object.entries(choices).map(([label, hash]) => /*html*/`
+            ${Object.entries(choices).map(([label, path]) => /*html*/`
               <li class="nav-item">
-                <a class="nav-link px-5 px-lg-2" href="${hash}">${label}</a>
+                <a class="nav-link px-5 px-lg-2" href="${path}">${label}</a>
               </li>
             `)}
             <li class="nav-item toggle-edit-mode">
-              <a class="edit-mode-on nav-link px-5 px-lg-2" href="#">Hide edit buttons</a>
-              <a class="edit-mode-off nav-link px-5 px-lg-2" href="#">Show edit buttons</a>
+              <a class="edit-mode-on nav-link px-5 px-lg-2">Hide edit buttons</a>
+              <a class="edit-mode-off nav-link px-5 px-lg-2">Show edit buttons</a>
             </li>
           </ul>
         </div>
@@ -43,8 +43,6 @@ export default function renderNavBar() {
 document.body.addEventListener('click', event => {
   const toggleEditMode = event.target.closest('li.toggle-edit-mode');
   if (!toggleEditMode) { return; }
-  // prevent navigation
-  event.preventDefault();
   // toggle edit mode
   document.body.classList.toggle('edit-mode');
   closeHamburgerBar();

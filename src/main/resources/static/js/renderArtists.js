@@ -17,7 +17,7 @@ export function renderArtists(artists) {
 // Render one artist
 export function renderArtist({ id, name, description, base64image }, short) {
   let html = `<div class="card mb-4 artist ${short ? 'short' : ''}" data-id="${id}">
-    <a href="${short ? '#artist-info-' + id : '#'}">
+    <a href="${short ? '/artist-info-' + id : '/'}">
       <img src="${base64image}" class="card-img-top" alt="${name}">
     </a>
     <div class="card-body">
@@ -26,9 +26,9 @@ export function renderArtist({ id, name, description, base64image }, short) {
         ${description.split('\n\n').map(para => `<p>${para}</p>`).slice(0, short ? 1 : Infinity)}
       </div>
       ${short ? `
-          <a href="#artist-info-${id}" class="mt-4 btn btn-secondary float-end">Read more</a>
+          <a href="/artist-info-${id}" class="mt-4 btn btn-secondary float-end">Read more</a>
         ` : `
-          <a href="#" class="mt-4 btn btn-secondary float-end">Back to all artists</a>
+          <a href="/" class="mt-4 btn btn-secondary float-end">Back to all artists</a>
       `}
       <button class="removeArtist edit-mode-on mt-4 btn btn-danger float-end me-3">
         Remove
@@ -56,7 +56,7 @@ document.body.addEventListener('click', async event => {
   // remove from globalThis.artists
   globalThis.artists = globalThis.artists.filter(artist => artist.id !== id);
   // navigate to the artist page
-  location.hash = '#';
+  window.history.pushState(null, null, '/');
   displayPage();
 });
 
@@ -67,5 +67,5 @@ document.body.addEventListener('click', async event => {
   // get id of artist to remove
   const id = +editArtistButton.closest('.artist[data-id]').getAttribute('data-id');
   // navigate to edit form
-  location.hash = `#edit-artist-${id}`;
+  window.history.pushState(null, null, `edit-artist-${id}`);
 });

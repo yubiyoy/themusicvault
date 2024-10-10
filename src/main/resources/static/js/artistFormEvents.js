@@ -36,7 +36,7 @@ document.body.addEventListener('submit', async event => {
   // sort artists by name
   globalThis.artists.sort((a, b) => a.name > b.name ? 1 : -1);
   // navigate to the artist page
-  location.hash = "#";
+  window.history.pushState(null, null, '/');
   // scroll the artist into view
   setTimeout(() => {
     document.querySelector(`.artist[data-id="${artistFromDb.id}"]`)
