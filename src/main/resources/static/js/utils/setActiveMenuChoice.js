@@ -7,7 +7,7 @@ export default function setActiveMenuChoice() {
   let path = location.pathname
   if (path.includes('artist-info')) { path = ''; }
   const activeNavLink = navLinks
-    .find(navLink => navLink.getAttribute('href').includes(path));
+    .find(navLink => (navLink.getAttribute('href') || '').includes(path));
   if (!activeNavLink) { return; }
   activeNavLink.classList.add('active');
 }

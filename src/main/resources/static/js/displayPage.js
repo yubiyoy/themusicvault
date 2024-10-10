@@ -12,7 +12,6 @@ import closeHamburgerBar from './utils/closeHamburgerBar.js';
 export default function displayPage() {
   const artists = globalThis.artists;
   const choice = location.pathname.replace('/', '');
-  console.log(choice);
   let html;
   if (choice === '') {
     html = renderArtists(artists);
