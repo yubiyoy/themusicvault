@@ -79,5 +79,5 @@ document.body.addEventListener('submit', async event => {
   setTimeout(() => {
     document.querySelector(`.artist[data-id="${artistFromDb.id}"]`)
       .scrollIntoView();
-  }, 100);
+  }, 500);
 });
