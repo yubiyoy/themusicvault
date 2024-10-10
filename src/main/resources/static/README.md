@@ -35,6 +35,13 @@ https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 #### The Bootstrap documentation - to get started with CSS with Bootstrap
 https://getbootstrap.com/docs/5.3/getting-started/introduction
 
+#### Creating a Single Page Application - always serve index.html on missing backend route
+To make an SPA application work 100% - we need the frontend to handle routing and on a hard page reload we always want to serve index.html. I solved how to do this in Spring by reading this article and choosing solution 3 from the article (which also meant copying the content of my index.html file to */src/main/resources/templates/error.html.*)
+* https://bootcamptoprod.com/spring-boot-no-explicit-mapping-error-handling
+
+#### Applying frontend routing using the history push state api
+https://css-tricks.com/using-the-html5-history-api
+
 #### Documentation about JS built in FileReader class
 https://developer.mozilla.org/en-US/docs/Web/API/FileReader
 
