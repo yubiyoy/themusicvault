@@ -47,6 +47,10 @@ document.body.addEventListener('click', async event => {
   if (!removeArtistButton) { return; }
   // get id of artist to remove
   const id = +removeArtistButton.closest('.artist[data-id]').getAttribute('data-id');
+  // get the name of the artist
+  const { name } = globalThis.artists.find(artist => artist.id === id);
+  // confirm removal
+  if (!confirm(`WARNING:\nThis will permanently delete ${name}.\n\nAre you sure?`)) { return; }
   // remove the artist via the REST-api
   await remove('artists', id);
   // remove from globalThis.artists
