@@ -3,6 +3,7 @@ import './utils/usePushStateOnInternalLinks.js';
 import './utils/noCommasOnArrayToString.js';
 import renderNavBar from './renderNavbar.js';
 import displayPage from './displayPage.js';
+import { register } from './utils/loginAndRegister.js';
 import { renderModalSkeleton } from './utils/waitForModalAnswer.js';
 import { get } from './utils/fetchHelpers.js';
 
