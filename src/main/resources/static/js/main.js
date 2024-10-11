@@ -19,7 +19,7 @@ async function start() {
   renderNavBar();
   // Get a list of all artists and store in globalThis
   globalThis.artists = await get('artists');
-  // Display 'page' depending url - SPA frontend routing
+  // Display 'page' depending on url - SPA frontend routing
   displayPage();
   window.addEventListener('popstate', displayPage);
 }
