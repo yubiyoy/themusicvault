@@ -6,23 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "artists")
+@Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Artist {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "description", columnDefinition="TEXT")
-    private String description;
-
-    @Column(name = "base64image", columnDefinition="LONGTEXT")
-    private String base64image;
+    @Column(name = "encrypted_password")
+    private String encryptedPassword;
 
 }

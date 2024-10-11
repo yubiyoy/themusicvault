@@ -19,6 +19,6 @@ public class ArtistWithoutImage {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description",columnDefinition="TEXT")
+    @Column(name = "description", columnDefinition="TEXT")
     private String description;
 }
