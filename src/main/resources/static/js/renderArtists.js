@@ -68,4 +68,5 @@ document.body.addEventListener('click', async event => {
   const id = +editArtistButton.closest('.artist[data-id]').getAttribute('data-id');
   // navigate to edit form
   window.history.pushState(null, null, `edit-artist-${id}`);
+  displayPage();
 });
