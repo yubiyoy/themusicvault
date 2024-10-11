@@ -1,5 +1,5 @@
 import './utils/followExternalLinksInNewTab.js';
-import './utils/applyPopStateOnInternalLinks.js';
+import './utils/usePushStateOnInternalLinks.js';
 import './utils/noCommasOnArrayToString.js';
 import { get } from './utils/fetchHelpers.js';
 import renderNavBar from './renderNavbar.js';
