@@ -1,9 +1,10 @@
 import './utils/followExternalLinksInNewTab.js';
 import './utils/usePushStateOnInternalLinks.js';
 import './utils/noCommasOnArrayToString.js';
-import { get } from './utils/fetchHelpers.js';
 import renderNavBar from './renderNavbar.js';
 import displayPage from './displayPage.js';
+import { renderModalSkeleton } from './utils/waitForModalAnswer.js';
+import { get } from './utils/fetchHelpers.js';
 
 // Start the application
 async function start() {
@@ -14,6 +15,7 @@ async function start() {
     <footer class="text-center py-3 mt-3">
       © Jakob Koberstein Productions ${new Date().getFullYear()}
     </footer>
+    ${renderModalSkeleton()}
   `;
   // Render the navbar
   renderNavBar();

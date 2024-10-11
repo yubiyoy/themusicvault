@@ -2,6 +2,7 @@
 import fileToBase64 from "./utils/fileToBase64.js";
 import formDataCollector from "./utils/formDataCollector.js";
 import { post, put } from './utils/fetchHelpers.js'
+import displayPage from "./displayPage.js";
 
 // on image chosen - encode to base64 and show preview image
 document.body.addEventListener('change', async event => {
@@ -37,6 +38,7 @@ document.body.addEventListener('submit', async event => {
   globalThis.artists.sort((a, b) => a.name > b.name ? 1 : -1);
   // navigate to the artist page
   window.history.pushState(null, null, '/');
+  displayPage();
   // scroll the artist into view
   setTimeout(() => {
     document.querySelector(`.artist[data-id="${artistFromDb.id}"]`)

@@ -1,4 +1,5 @@
 import displayPage from './displayPage.js';
+import waitForModalAnswer from './utils/waitForModalAnswer.js';
 import { remove } from './utils/fetchHelpers.js';
 
 // Render a list of artists
@@ -50,7 +51,12 @@ document.body.addEventListener('click', async event => {
   // get the name of the artist
   const { name } = globalThis.artists.find(artist => artist.id === id);
   // confirm removal
-  if (!confirm(`WARNING:\nThis will permanently delete ${name}.\n\nAre you sure?`)) { return; }
+  const answer = await waitForModalAnswer(
+    `Remove ${name}`,
+    /*html*/`<p><i>This will permanently remove ${name}...</i></p><p>Are you sure?</p>`,
+    ['Cancel:secondary', 'Remove:danger']
+  );
+  if (answer !== 'Remove') { return; }
   // remove the artist via the REST-api
   await remove('artists', id);
   // remove from globalThis.artists
