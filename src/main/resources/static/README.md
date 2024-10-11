@@ -6,8 +6,8 @@ This is the way I have worked with the project:
 * I use GitHub Desktop to commit my changes to the git repository.
 * I open the whole repository in IntelliJ Idea.
 * I open the frontend folder (src/main/resources/static) with "Open folder" in VSC.
-* I have installed the VSC extension Thunder Client in VSC - so that I can test my REST routes.
-* I have installed the VSC extension leet-html in VSC and thus template literal strings containing HTML in my JS code gets highlighted nicely.
+* I have installed the VSC extension **Thunder** Client in VSC - and use it to test my REST routes.
+* I have installed the VSC extension **leet-html** in VSC and thus template literal strings containing HTML in my JS code gets highlighted nicely.
 * I use the CSS framework Bootstrap - which saves how much own CSS I have to write and helps me make the frontend application responsive.
 * I use vanilla JS and try to write in a modern style with the code divided into different ES-modules.
 * I use a local instance of MySQL and my database name is **jacobWebApp**. I save a database dump of the database as an sql file in the repo, so that I can restore the database if I need to and others can install it. It is stored in src/main/resources/db-dump.
@@ -32,10 +32,10 @@ https://www.baeldung.com/spring-data-rest-serialize-entity-id
 #### Fetching from a REST-api on frontend
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 
-#### The Bootstrap documentation - to get started with CSS with Bootstrap
+#### The Bootstrap documentation, started with CSS with Bootstrap
 https://getbootstrap.com/docs/5.3/getting-started/introduction
 
-#### Creating a Single Page Application - always serve index.html on missing backend route
+#### Creating a Single Page Application, always serve index.html on missing backend route
 To make an SPA application work 100% - we need the frontend to handle routing and on a hard page reload we always want to serve index.html. I solved how to do this in Spring by reading this article and choosing solution 3 from the article (which also meant copying the content of my index.html file to */src/main/resources/templates/error.html.*)
 * https://bootcamptoprod.com/spring-boot-no-explicit-mapping-error-handling
 
@@ -52,8 +52,7 @@ Until I got the image upload in place I used this online tool for conversion to 
 https://www.base64-image.de
 
 ### Data collected from
-* Text and images from https://www.discogs.com are used in the DB.
-* And also artist presentations from https://prezi.com.
+* Text and images from https://www.discogs.com and https://prezi.com are used in the DB.
 
 ### Idea for albums
 Save an Spotify embed link in the database and use code like the one shown here:
