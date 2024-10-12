@@ -51,6 +51,8 @@ export function login(email, password) {
 export function logout() {
   delete globalThis.sessionStorage.user;
   renderNavBar();
+  // turn off edit mode
+  document.body.classList.remove('edit-mode');
   // navigate to the artist page
   window.history.pushState(null, null, '/');
   displayPage();
