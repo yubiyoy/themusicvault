@@ -1,10 +1,10 @@
-import './artistFormEvents.js';
+import './eventsForArtistForm.js';
 
 // Render a form for adding or editing artist info
 export default function renderArtistForm(artist = {}) {
   let { id, name, description, base64image } = artist;
   return `
-    <form name="addArtist">
+    <form name="artist">
       ${id ? `<input type="hidden" name="id" value="${id}">` : ''}
       <div class="row">
         <div class="col">

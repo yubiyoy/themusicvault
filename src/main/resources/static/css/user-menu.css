@@ -1,0 +1,26 @@
+.user-profile {
+  position: absolute;
+  width: 30px;
+  right: 100px;
+  top: 15px;
+  z-index: 100;
+
+  @media (min-width: 992px) {
+    right: 40px;
+  }
+}
+
+.user-profile a {
+  cursor: pointer;
+}
+
+.user-profile img {
+  width: 30px;
+  display: block;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+.user-profile .dropdown-toggle::after {
+  display: none;
+}

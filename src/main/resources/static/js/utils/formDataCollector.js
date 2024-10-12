@@ -5,6 +5,7 @@ export default function formDataCollector(form) {
   const data = {};
   for (let element of form.elements) {
     if (['submit', 'file'].includes(element.type)) { continue; }
+    if (element.name.startsWith('repeat')) { continue; }
     data[element.name] = element.value;
   }
   return data;

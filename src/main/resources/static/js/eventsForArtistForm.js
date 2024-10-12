@@ -6,22 +6,22 @@ import displayPage from "./displayPage.js";
 
 // on image chosen - encode to base64 and show preview image
 document.body.addEventListener('change', async event => {
-  const fileField = event.target.closest('form[name="addArtist"] [type="file"]');
+  const fileField = event.target.closest('form[name="artist"] [type="file"]');
   if (!fileField) { return; }
   const encoded = await fileToBase64(fileField);
-  document.querySelector('form[name="addArtist"] [name="base64image"]').value = encoded;
-  document.querySelector('form[name="addArtist"] img.preview').src = encoded;
+  document.querySelector('form[name="artist"] [name="base64image"]').value = encoded;
+  document.querySelector('form[name="artist"] img.preview').src = encoded;
 });
 
 // on submit - post the new artist via our REST-api
 // or put the changes if we are editing an artist
 document.body.addEventListener('submit', async event => {
-  const addArtistForm = event.target.closest('form[name="addArtist"]');
-  if (!addArtistForm) { return; }
+  const artistForm = event.target.closest('form[name="artist"]');
+  if (!artistForm) { return; }
   // do not make hard page reload
   event.preventDefault();
   // collect the data form the form and post/put it via the REST-api
-  const data = formDataCollector(addArtistForm);
+  const data = formDataCollector(artistForm);
   const { id } = data;
   // post or put the new artist and remember they
   let artistFromDb = !id ?

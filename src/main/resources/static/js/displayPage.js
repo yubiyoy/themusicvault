@@ -1,10 +1,10 @@
 import { renderArtists, renderArtist } from './renderArtists.js';
 import renderArtistForm from './renderArtistForm.js';
 import renderAboutFromReadMe from './renderAboutFromReadMe.js';
+import renderUserForm from './renderUserForm.js';
 import render404 from './render404.js';
 import setActiveMenuChoice from './utils/setActiveMenuChoice.js';
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
-
 
 // Display different 'pages' depending on the url / location path
 // (this is an Single Page Applicaiton so a 'page change'
@@ -31,6 +31,9 @@ export default function displayPage() {
   }
   else if (choice === 'about') {
     html = renderAboutFromReadMe();
+  }
+  else if (choice === 'register') {
+    html = renderUserForm();
   }
   else {
     html = render404();
