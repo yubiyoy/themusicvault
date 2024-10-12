@@ -1,6 +1,7 @@
 import { get, post, put } from './fetchHelpers.js';
 import renderNavBar from '../renderNavbar.js';
 import displayPage from '../displayPage.js';
+import displayToast from './displayToast.js';
 
 // Functions for registering and updating a user, 
 // checking that a email is available (not used by anaother user),
@@ -43,7 +44,10 @@ export function login(email, password) {
   const user = users.find(
     user => user.email === email && user.encryptedPassword === encryptedPassword
   );
-  if (user) { globalThis.sessionStorage.user = JSON.stringify(user) };
+  if (user) {
+    globalThis.sessionStorage.user = JSON.stringify(user);
+    displayToast('Logged in', `Welcome <b>${user.firstName} ${user.lastName}</b>!`)
+  };
   renderNavBar();
   return user;
 }
@@ -56,6 +60,7 @@ export function logout() {
   // navigate to the artist page
   window.history.pushState(null, null, '/');
   displayPage();
+  displayToast('Logged out', `You successfully logged out!!`)
   return true;
 }
 

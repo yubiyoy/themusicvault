@@ -15,6 +15,7 @@ async function start() {
     <footer class="text-center py-3 mt-3">
       © Jakob Koberstein Productions ${new Date().getFullYear()}
     </footer>
+    <div class="toast-container"></div>
     ${renderModalSkeleton()}
   `;
   // Render the navbar

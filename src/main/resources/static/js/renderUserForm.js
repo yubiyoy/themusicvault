@@ -10,7 +10,7 @@ export default function renderUserForm() {
       ${id ? `<input type="hidden" name="id" value="${id}">` : ''}
       <div class="row">
         <div class="col">
-          <h1>${id ? `${firstName} ${lastName}` : 'Register'}</h1>
+          <h1>${id ? `Edit: ${firstName} ${lastName}` : 'Register'}</h1>
           <label class="form-label mt-4">
             First name:
             <input name="firstName" class="form-control"

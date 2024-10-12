@@ -1,5 +1,6 @@
 import { checkLoggedIn, logout } from './utils/loginAndRegister.js';
 import renderLoginForm from './renderLoginForm.js';
+import displayToast from './utils/displayToast.js';
 
 // Render the user menu part of the navbar
 export default function renderUserMenu() {

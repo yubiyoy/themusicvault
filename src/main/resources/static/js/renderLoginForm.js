@@ -34,7 +34,17 @@ export default async function renderLoginForm() {
     const { email: _email, password } = formDataCollector(
       document.querySelector('form[name="login"]')
     );
+    document.querySelector('.modal-content').innerHTML = '';
     email = _email;
     loggedIn = login(email, password);
   }
 }
+
+// Perform the log in if the user presses enter in the password field
+document.body.addEventListener('keyup', event => {
+  let passwordField = event.target.closest('form[name="login"] input[name="password"]');
+  if (!passwordField) { return; }
+  if (event.key === 'Enter') {
+    document.querySelector('.modal-footer .btn-primary').click();
+  }
+});
