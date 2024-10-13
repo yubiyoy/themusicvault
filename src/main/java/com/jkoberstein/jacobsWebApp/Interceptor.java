@@ -52,10 +52,11 @@ public class Interceptor implements HandlerInterceptor {
 
         // Check all REST-routes against Acl rules
         var userRole = "user";
-        var isAllowed = routeAllowedByAcl(
-                method, url.replaceFirst("/api",""), userRole
-        );
-        if(!isAllowed){
+        if(!routeAllowedByAcl(
+            method,
+            url.replaceFirst("/api",""),
+            userRole
+        )){
             response.setStatus(405);
             response.getWriter().write("{\"error\":\"Not allowed\"}");
             return false;
