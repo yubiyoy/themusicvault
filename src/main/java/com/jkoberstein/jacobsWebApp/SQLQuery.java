@@ -1,24 +1,32 @@
 package com.jkoberstein.jacobsWebApp;
-import org.hibernate.service.spi.InjectService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import java.io.IOException;
+import java.util.Properties;
 
-import javax.sql.DataSource;
-
-@Service
 public  class SQLQuery {
 
-    private JdbcTemplate jdbc;
+    private static JdbcTemplate jdbc;
 
     public SQLQuery(){
+        if(jdbc != null){return;}
+        // read db settings from application.properties
+        // (should have been possible to @AutoWire, but didn't work)
+        Properties props;
+        try {
+            var resource = new ClassPathResource("/application.properties");
+            props = PropertiesLoaderUtils.loadProperties(resource);
+        }
+        catch(IOException e){throw new RuntimeException(e);}
         var builder = DataSourceBuilder.create();
-        builder.driverClassName("com.mysql.cj.jdbc.Driver");
-        builder.url("jdbc:mysql://localhost:3306/jacobWebApp");
-        builder.username("root");
-        builder.password("12345678");
+        var pre = "spring.datasource.";
+        builder.driverClassName((String)props.get(pre+"driver-class-name"));
+        builder.url((String)props.get(pre+"url"));
+        builder.username((String)props.get(pre+"username"));
+        builder.password((String)props.get(pre+"password"));
+        // create new jdbc driver
         jdbc = new JdbcTemplate(builder.build());
     }
 
