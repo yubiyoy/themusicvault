@@ -14,8 +14,14 @@ This is the way I have worked with the project:
 
 ### Articles I read to help me get started
 
-#### Sprint Data REST - build REST routes without Controllers & Services
-https://medium.com/@mertkagan/spring-data-rest-say-goodbye-to-controller-and-service-1acb6c7437f1
+#### Sprint Data REST: Building REST routes without Controllers & Services
+* https://medium.com/@mertkagan/spring-data-rest-say-goodbye-to-controller-and-service-1acb6c7437f1
+* https://www.baeldung.com/spring-data-rest-intro
+* https://docs.spring.io/spring-data/rest/docs/4.0.6/reference/html
+
+#### Interceptors: Modifying and disallowing route responses
+* https://www.baeldung.com/spring-mvc-handlerinterceptor
+* https://stackoverflow.com/questions/46953039/spring-interceptor-not-working-in-spring-data-rest-urls - for adding interceptors that work with Spring Data Rest (see the answer from *Carlitos Way*).
 
 #### Changing the base-path of REST-api to /api
 https://stackoverflow.com/questions/32927937/how-to-set-base-url-for-rest-in-spring-boot
