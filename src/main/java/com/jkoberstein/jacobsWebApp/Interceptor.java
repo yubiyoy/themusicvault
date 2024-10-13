@@ -1,27 +1,33 @@
 package com.jkoberstein.jacobsWebApp;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.Map;
 
+@SuppressWarnings("ConstantConditions")
 public class Interceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(
+            @NonNull
             HttpServletRequest request,
+            @NonNull
             HttpServletResponse response,
+            @NonNull
             Object handler
     ) throws Exception {
 
         // Turn on/off logging
         var log = true;
+
+        // Session handling
+        var session = new Session(request,response);
 
         // Some info about the request (and response)
         var method = request.getMethod();
@@ -30,7 +36,7 @@ public class Interceptor implements HandlerInterceptor {
 
         // Log requests to the REST-api
         if(log){
-            System.out.println( " [" + method + "] " + url + " statusCode: "+ statusCode);
+            System.out.println( " [" + method + "] " + url + " [statusCode: "+ statusCode + "]");
         }
 
         // If 404 then return the index.html file (SPA-style)
@@ -50,6 +56,12 @@ public class Interceptor implements HandlerInterceptor {
             return true;
         }
 
+        // Handle login
+        if(url.equals("/api/login")){
+            JsonResponse.write(response,LoginHandler.handle(method,request));
+            return false;
+        }
+
         // Check all REST-routes against Acl rules
         var userRole = "user";
         if(!routeAllowedByAcl(
@@ -58,7 +70,7 @@ public class Interceptor implements HandlerInterceptor {
             userRole
         )){
             response.setStatus(405);
-            response.getWriter().write("{\"error\":\"Not allowed\"}");
+            JsonResponse.write(response,Map.of("error","Not allowed."));
             return false;
         }
         return true;

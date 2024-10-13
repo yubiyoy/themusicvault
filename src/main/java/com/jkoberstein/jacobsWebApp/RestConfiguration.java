@@ -1,5 +1,4 @@
 package com.jkoberstein.jacobsWebApp;
-
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +8,6 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import jakarta.persistence.metamodel.Type;
 import org.springframework.web.servlet.handler.MappedInterceptor;
-
 
 @Configuration
 public class RestConfiguration implements RepositoryRestConfigurer {
@@ -29,11 +27,11 @@ public class RestConfiguration implements RepositoryRestConfigurer {
 
     // This connects our interceptor to all routes
     @Bean
-    public MappedInterceptor someMethodName() {
+    public MappedInterceptor connectInterceptor() {
         return new MappedInterceptor(
-                // map to all repositories by using null
-                null,
-                new Interceptor()
+            // map to all repositories by using null
+            null,
+            new Interceptor()
         );
     }
 }
