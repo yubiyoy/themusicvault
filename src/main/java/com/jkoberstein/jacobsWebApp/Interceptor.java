@@ -29,6 +29,11 @@ public class Interceptor implements HandlerInterceptor {
         // Starts session handling
         var session = new Session(request,response);
 
+        // Get the user role of the person making the request
+        var loggedInUser = session.read();
+        var userRole = (String)(loggedInUser == null
+            ? "visitor" : loggedInUser.get("role"));
+
         // Some info about the request (and response)
         var method = request.getMethod();
         var url = request.getRequestURI();
@@ -36,11 +41,13 @@ public class Interceptor implements HandlerInterceptor {
 
         // Log requests to the REST-api
         if(log){
-            System.out.println( " [" + method + "] " + url + " [statusCode: "+ statusCode + "]");
+            System.out.println(
+                " [" + method + "] " + url +
+                " [statusCode: "+ statusCode + "] [userRole: " + userRole + "]"
+            );
         }
 
         // Check all REST-routes against Acl rules
-        var userRole = "user";
         if(!routeAllowedByAcl(method,url,userRole)){
             response.setStatus(405);
             JsonResponse.write(response,Map.of("error","Not allowed."));

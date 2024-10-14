@@ -26,7 +26,7 @@ public class Session {
        }
     }
 
-    public Object read(){
+    public Map<String,Object> read(){
         var result = sql.runOne("SELECT value FROM sessions WHERE session_id = ?", cookieValue);
         if(result == null){ return null; }
         Type type = new TypeToken<Map<String,Object>>(){}.getType();
