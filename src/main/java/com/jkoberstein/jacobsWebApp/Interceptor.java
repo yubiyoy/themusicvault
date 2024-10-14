@@ -58,7 +58,7 @@ public class Interceptor implements HandlerInterceptor {
 
         // Handle login
         if(url.equals("/api/login")){
-            JsonResponse.write(response,LoginHandler.handle(method,request));
+            JsonResponse.write(response,LoginHandler.handle(method,request,session));
             return false;
         }
 

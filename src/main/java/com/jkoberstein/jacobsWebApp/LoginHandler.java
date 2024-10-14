@@ -10,7 +10,7 @@ public abstract class LoginHandler {
     private static final SQLQuery sql = new SQLQuery();
 
     public static Object handle(
-            String method, HttpServletRequest request)
+            String method, HttpServletRequest request, Session session)
             throws IOException {
 
         if(method.equals("POST")) {
@@ -18,11 +18,24 @@ public abstract class LoginHandler {
             if (!reqBody.containsKey("email") || !reqBody.containsKey(("password"))) {
                 return Map.of("error", "Missing properties in request body.");
             }
-            var result = sql.run(
-                "SELECT * FROM users WHERE email = ? AND encrypted_password = ?",
+            var result = sql.runOne(
+                "SELECT email, first_name AS firstName, last_name AS lastName, "+
+                        "role FROM users WHERE email = ? AND encrypted_password = ?",
                 reqBody.get("email"), reqBody.get("password")
             );
-            return result;
+            session.write(result);
+            return result == null ?
+                Map.of("error","Wrong credentials") : result;
+        }
+
+        if(method.equals("GET")){
+            return session.read() == null ?
+                Map.of("error","Not logged in") : session.read();
+        }
+
+        if(method.equals("DELETE")){
+            session.write(null);
+            return Map.of("status","Logged out");
         }
 
         return Map.of("ok",true);

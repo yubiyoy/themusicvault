@@ -1,23 +1,37 @@
 package com.jkoberstein.jacobsWebApp;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Cookie;
+
+import java.lang.reflect.Type;
 import java.util.Arrays;
+import java.util.Map;
 
 public class Session {
 
     String cookieValue;
+    SQLQuery sql;
 
     public Session(HttpServletRequest request, HttpServletResponse response){
         cookieValue = getOrSetCookie(request, response);
+        sql = new SQLQuery();
     }
 
-    public boolean write(String value) {
-        return true;
+    public void write(Object value) {
+       sql.run("DELETE FROM sessions WHERE session_id = ?", cookieValue);
+       if(value!=null){
+           String json = new Gson().toJson(value);
+           sql.run("INSERT INTO sessions (session_id, value) VALUES(?, ?)",cookieValue,json);
+       }
     }
 
-    public String SessionRead(){
-        return "";
+    public Object read(){
+        var result = sql.runOne("SELECT value FROM sessions WHERE session_id = ?", cookieValue);
+        if(result == null){ return null; }
+        Type type = new TypeToken<Map<String,Object>>(){}.getType();
+        return new Gson().fromJson((String)result.get("value"),type);
     }
 
     private String getOrSetCookie(

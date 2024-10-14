@@ -4,6 +4,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 public  class SQLQuery {
@@ -31,7 +32,19 @@ public  class SQLQuery {
     }
 
     public Object run(String sql, Object ...params){
-        return jdbc.queryForList(sql, params);
+        if(sql.toUpperCase().trim().startsWith(("SELECT"))){
+            return jdbc.queryForList(sql, params);
+        }
+        else {
+            return jdbc.update(sql,params);
+        }
+    }
+
+    public Map<String,Object> runOne(String sql, Object ...params){
+        try {
+            return jdbc.queryForMap(sql, params);
+        }
+        catch(Exception e){ return null; }
     }
 
 }
