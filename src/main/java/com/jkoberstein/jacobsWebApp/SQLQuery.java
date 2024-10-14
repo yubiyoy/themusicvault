@@ -32,12 +32,15 @@ public  class SQLQuery {
     }
 
     public Object run(String sql, Object ...params){
-        if(sql.toUpperCase().trim().startsWith(("SELECT"))){
-            return jdbc.queryForList(sql, params);
+        try {
+            if(sql.toUpperCase().trim().startsWith(("SELECT"))) {
+                return jdbc.queryForList(sql, params);
+            }
+            else {
+                return jdbc.update(sql,params);
+            }
         }
-        else {
-            return jdbc.update(sql,params);
-        }
+        catch(Exception error){ return Map.of("error","SQL error"); }
     }
 
     public Map<String,Object> runOne(String sql, Object ...params){

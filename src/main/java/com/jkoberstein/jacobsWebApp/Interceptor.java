@@ -26,7 +26,7 @@ public class Interceptor implements HandlerInterceptor {
         // Turn on/off logging
         var log = true;
 
-        // Session handling
+        // Starts session handling
         var session = new Session(request,response);
 
         // Some info about the request (and response)
@@ -39,7 +39,15 @@ public class Interceptor implements HandlerInterceptor {
             System.out.println( " [" + method + "] " + url + " [statusCode: "+ statusCode + "]");
         }
 
-        // If 404 then return the index.html file (SPA-style)
+        // Check all REST-routes against Acl rules
+        var userRole = "user";
+        if(!routeAllowedByAcl(method,url,userRole)){
+            response.setStatus(405);
+            JsonResponse.write(response,Map.of("error","Not allowed."));
+            return false;
+        }
+
+        // If GET and 404 then return the index.html file (SPA-style)
         if(method.equals("GET") && statusCode == 404){
             response.setStatus(200);
             InputStream inputStream = new FileInputStream(getPathToIndexHtml());
@@ -51,28 +59,18 @@ public class Interceptor implements HandlerInterceptor {
             return false;
         }
 
-        // Let all requests for static files through
-        if(!url.startsWith("/api")){
-            return true;
-        }
-
         // Handle login
         if(url.equals("/api/login")){
-            JsonResponse.write(response,LoginHandler.handle(method,request,session));
+            JsonResponse.write(response, LoginAndRegister.login(method,request,session));
             return false;
         }
 
-        // Check all REST-routes against Acl rules
-        var userRole = "user";
-        if(!routeAllowedByAcl(
-            method,
-            url.replaceFirst("/api",""),
-            userRole
-        )){
-            response.setStatus(405);
-            JsonResponse.write(response,Map.of("error","Not allowed."));
+        // Handle user registration
+        if(url.equals("/api/register") && method.equals("POST")){
+            JsonResponse.write(response, LoginAndRegister.register(request,session));
             return false;
         }
+
         return true;
     }
 
@@ -84,8 +82,16 @@ public class Interceptor implements HandlerInterceptor {
     }
 
     private boolean routeAllowedByAcl(String method, String url, String userRole){
+        // Let all requests for static files through
+        if(!url.startsWith("/api")){ return true; }
+        // Check against all Acl rules
+        url = url.replaceFirst("/api","");
         for (var rule : AclRules.whiteList){
-            if(method.equals(rule[0]) && url.startsWith(rule[1]) && userRole.equals(rule[2])){
+            if(
+                method.equals(rule[0]) &&
+                userRole.equals(rule[2]) &&
+                (url.equals(rule[1]) || url.startsWith(rule[1]+"/"))
+            ){
                 return true;
             }
         }

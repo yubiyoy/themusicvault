@@ -9,10 +9,11 @@ public abstract class JsonResponse {
     public static void write(
         HttpServletResponse response,
         Object toJson
-    ) throws Exception{
+    ) throws Exception {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         String json = new Gson().toJson(toJson);
+        if(json.contains("\"error\"")){ response.setStatus(405); }
         response.getWriter().write(json);
     }
 }
