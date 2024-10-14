@@ -6,9 +6,10 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-public abstract class ReadReqestBody {
+public abstract class ReadRequestBody {
 
-    public static Map reader(HttpServletRequest request)  {
+    // Read the request body of a request
+    public static Map<String,Object> reader(HttpServletRequest request)  {
         var sb = new StringBuilder();
         try {
             var reader = request.getReader();
@@ -27,6 +28,13 @@ public abstract class ReadReqestBody {
         }
         catch(Exception e) {
             return Map.of("error","Malformed JSON");
+        }
+    }
+
+    // Remove properties from a read request body
+    public static void removeProps(Map<String,Object> reqBody, String... props){
+        for(var prop : props){
+            reqBody.remove(prop);
         }
     }
 
