@@ -14,7 +14,7 @@ public  class SQLQuery {
     public SQLQuery(){
         if(jdbc != null){return;}
         // read db settings from application.properties
-        // (should have been possible to @AutoWire, but didn't work)
+        // (should have been possible to @AutoWire them, but didn't work)
         Properties props;
         try {
             var resource = new ClassPathResource("/application.properties");
