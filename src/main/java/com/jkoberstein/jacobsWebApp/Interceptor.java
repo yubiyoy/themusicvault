@@ -34,7 +34,7 @@ public class Interceptor implements HandlerInterceptor {
         var userRole = (String)(loggedInUser == null
             ? "visitor" : loggedInUser.get("role"));
 
-        // Some info about the request (and response)
+        // Some info we'll need frequently about the request (and response)
         var method = request.getMethod();
         var url = request.getRequestURI();
         var statusCode = response.getStatus();
@@ -54,7 +54,7 @@ public class Interceptor implements HandlerInterceptor {
             return false;
         }
 
-        // If GET and 404 then return the index.html file (SPA-style)
+        // If GET and 404 then return the index.html file contents (SPA-style)
         if(method.equals("GET") && statusCode == 404){
             response.setStatus(200);
             InputStream inputStream = new FileInputStream(getPathToIndexHtml());

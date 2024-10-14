@@ -9,7 +9,6 @@ public abstract class LoginAndRegister {
 
     private static final SQLQuery sql = new SQLQuery();
 
-    @SuppressWarnings("unchecked")
     public static Object register(
             HttpServletRequest request, Session session)
             throws IOException {
@@ -57,11 +56,11 @@ public abstract class LoginAndRegister {
                 if (!reqBody.containsKey("email") || !reqBody.containsKey(("password"))) {
                     return Map.of("error", "Missing properties in request body.");
                 }
+
                 var foundUser = sql.runOne(
                     "SELECT * FROM users WHERE email = ?",
                     reqBody.get("email")
                 );
-
                 // if the user is not found
                 if(foundUser == null){
                     return Map.of("error", "No such user");
@@ -76,8 +75,9 @@ public abstract class LoginAndRegister {
                 }
 
                 // remove id and encrypted_password from foundUser
-                ReadRequestBody.removeProps(foundUser, "id","encrypted_password");
-
+                // store it in our session and return it
+                ReadRequestBody.removeProps(foundUser, "id", "encrypted_password");
+                session.write(foundUser);
                 return foundUser;
             }
             case "GET" -> {
