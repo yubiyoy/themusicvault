@@ -1,6 +1,5 @@
 package com.jkoberstein.jacobsWebApp;
 import jakarta.servlet.http.HttpServletRequest;
-import org.hibernate.annotations.processing.SQL;
 
 import java.io.IOException;
 import java.util.Map;
@@ -14,7 +13,10 @@ public abstract class LoginHandler {
             throws IOException {
 
         if(method.equals("POST")) {
-            var reqBody = ReadReqBody.reader(request);
+            var reqBody = ReadReqestBody.reader(request);
+            if(reqBody.containsKey("error")){
+                return reqBody;
+            }
             if (!reqBody.containsKey("email") || !reqBody.containsKey(("password"))) {
                 return Map.of("error", "Missing properties in request body.");
             }

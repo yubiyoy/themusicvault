@@ -6,22 +6,27 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-public abstract class ReadReqBody {
+public abstract class ReadReqestBody {
 
     public static Map reader(HttpServletRequest request)  {
+        var sb = new StringBuilder();
         try {
-            var sb = new StringBuilder();
             var reader = request.getReader();
             String line;
             while ((line = reader.readLine()) != null) {
                 sb.append("\n");
                 sb.append(line);
             }
-            String requestBody = sb.toString();
-            Type type = new TypeToken<Map<String,Object>>(){}.getType();
+        }
+        catch (IOException e) { throw new RuntimeException(e); }
+        String requestBody = sb.toString();
+        Type type = new TypeToken<Map<String,Object>>(){}.getType();
+        Map<String,Object> result;
+        try {
             return new Gson().fromJson(requestBody, type);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }
+        catch(Exception e) {
+            return Map.of("error","Malformed JSON");
         }
     }
 
