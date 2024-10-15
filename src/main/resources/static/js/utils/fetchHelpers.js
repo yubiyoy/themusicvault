@@ -37,7 +37,7 @@ export async function put(entity, id, dataToSend) {
 }
 
 export async function remove(entity, id) {
-  const response = await fetch(`${restBasePath}${entity}/${id}`, {
+  const response = await fetch(`${restBasePath}${entity}${id ? '/' + id : ''}`, {
     method: 'DELETE'
   });
   const status = await response.json();

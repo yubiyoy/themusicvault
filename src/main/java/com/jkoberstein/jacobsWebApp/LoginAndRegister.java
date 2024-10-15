@@ -87,9 +87,13 @@ public abstract class LoginAndRegister {
                     return Map.of("error", "Wrong credentials");
                 }
 
-                // remove id and encrypted_password from foundUser
+                // remove id and encrypted_password from foundUser,
+                // change first_name to firstName, and last_name to lastName,
                 // store it in our session and return it
                 ReadRequestBody.removeProps(foundUser, "id", "encrypted_password");
+                ReadRequestBody.renameProps(foundUser,
+                    Map.of("first_name","firstName","last_name","lastName")
+                );
                 session.write(foundUser);
                 return foundUser;
             }

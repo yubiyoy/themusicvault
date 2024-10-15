@@ -31,11 +31,18 @@ public abstract class ReadRequestBody {
         }
     }
 
-    // Remove properties from a read request body
+    // Remove properties in a read request body
     public static void removeProps(Map<String,Object> reqBody, String... props){
         for(var prop : props){
             reqBody.remove(prop);
         }
     }
 
+    // Rename properties in a read request body
+    public static void renameProps(Map<String,Object> reqBody, Map<String,Object> replace){
+        for(var prop : replace.entrySet()){
+            reqBody.put((String)(prop.getValue()),reqBody.get(prop.getKey()));
+            reqBody.remove(prop.getKey());
+        }
+    }
 }

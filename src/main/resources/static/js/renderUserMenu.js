@@ -1,5 +1,9 @@
 // import { checkLoggedIn, logout } from './utils/loginAndRegister.js';
+import { remove } from './utils/fetchHelpers.js';
+import displayPage from './displayPage.js';
 import renderLoginForm from './renderLoginForm.js';
+import renderNavBar from './renderNavbar.js';
+import displayToast from './utils/displayToast.js';
 
 // Render the user menu part of the navbar
 export default function renderUserMenu() {
@@ -35,6 +39,12 @@ document.body.addEventListener('click', async event => {
     renderLoginForm();
   }
   else if (choice === 'Logout') {
-    logout();
+    await remove('login');
+    globalThis.user = null;
+    renderNavBar();
+    displayToast('Logged out', 'You successfully logged out!!');
+    // navigate to the artist page
+    window.history.pushState(null, null, '/');
+    displayPage();
   }
 });

@@ -93,7 +93,6 @@ public class Interceptor implements HandlerInterceptor {
         if(!url.startsWith("/api")){ return true; }
         // Check against all Acl rules
         url = url.replaceFirst("/api","");
-        url = url.contains("?") ? url.substring(0, url.indexOf("?")) : url;
         for (var rule : AclRules.whiteList){
             if(
                 method.equals(rule[0]) &&
