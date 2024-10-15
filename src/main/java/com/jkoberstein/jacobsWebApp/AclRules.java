@@ -20,12 +20,11 @@ public abstract class AclRules {
             {"GET", "/artistsWithoutImages", "visitor"},
             {"GET", "/artistsWithoutImages", "user"},
             {"POST", "/login", "visitor"},
-            {"POST", "/login", "user"}, // remove soon
             {"GET", "/login", "visitor"},
             {"GET", "/login", "user"},
             {"DELETE", "/login", "user"},
             {"POST", "/register", "visitor"},
-            {"POST", "/register", "user"} // remove soon
+            {"PUT", "/register", "user"}
     };
 
 }

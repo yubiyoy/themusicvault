@@ -72,8 +72,8 @@ public class Interceptor implements HandlerInterceptor {
             return false;
         }
 
-        // Handle user registration
-        if(url.equals("/api/register") && method.equals("POST")){
+        // Handle user registration and changes to user info
+        if(url.equals("/api/register") && (method.equals("POST") || method.equals("PUT"))){
             JsonResponse.write(response, LoginAndRegister.register(request,session));
             return false;
         }

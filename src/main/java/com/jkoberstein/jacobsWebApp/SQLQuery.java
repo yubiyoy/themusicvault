@@ -31,7 +31,7 @@ public  class SQLQuery {
         jdbc = new JdbcTemplate(builder.build());
     }
 
-    public Object run(String sql, Object ...params){
+    public Object run(String sql, Object... params){
         try {
             if(sql.toUpperCase().trim().startsWith(("SELECT"))) {
                 return jdbc.queryForList(sql, params);
