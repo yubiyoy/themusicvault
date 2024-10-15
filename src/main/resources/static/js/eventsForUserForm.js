@@ -1,8 +1,8 @@
 import formDataCollector from "./utils/formDataCollector.js";
-// import { registerOrUpdate, emailAvailable } from "./utils/loginAndRegister.js";
 import displayPage from "./displayPage.js";
 import renderNavBar from "./renderNavbar.js";
 import { post, get, put } from './utils/fetchHelpers.js';
+import waitForModalAnswer from "./utils/waitForModalAnswer.js";
 
 // require that the repeatPasswordField equals the password field
 document.body.addEventListener('keyup', event => {
@@ -18,7 +18,7 @@ document.body.addEventListener('keyup', event => {
 });
 
 // on submit - post the new user via our REST-api
-// or put the changes if we are editing a user
+// or put the changes to the REST-api if we are editing a user
 document.body.addEventListener('submit', async event => {
   const userForm = event.target.closest('form[name="user"]');
   if (!userForm) { return; }
@@ -28,9 +28,19 @@ document.body.addEventListener('submit', async event => {
   const data = formDataCollector(userForm);
   const { id } = data;
   // post or put the user
-  globalThis.user ?
+  const result = globalThis.user ?
     await put('register', '', data) :
     await post('register', data);
+  // check for errors
+  if (result.error) {
+    await waitForModalAnswer(
+      'Something went wrong...',
+      '<p>Most likely you have used a email already in use.</p><p>Have you registered before?</p>',
+      ["OK, I'll try again:secondary"]
+    );
+    return;
+  }
+  // update logged in user and rerender the nav bar
   globalThis.user = await get('login');
   renderNavBar();
   // navigate to the artist page

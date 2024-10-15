@@ -2,44 +2,48 @@
 
 const restBasePath = '/api/';
 
-export async function get(entity, sort = 'name', size = 1000) {
-  const response = await fetch(`${restBasePath}${entity}?size=${size}&sort=${sort}`);
-  const data = await response.json();
-  return ['login', 'register'].includes(entity) ? data : data._embedded[entity];
+// A helper for fetch that converts the response from json to js data
+async function _fetch(url, options) {
+  const response = await fetch(url, options);
+  return await response.json();
 }
 
+// One function per request method
+
+export async function get(entity, sort = 'name', size = 1000) {
+  const data = await _fetch(`${restBasePath}${entity}?size=${size}&sort=${sort}`);
+  return (data || {})._embedded ? data._embedded[entity] : data;
+}
+window.get = get;
+
 export async function getOne(entity, id) {
-  const response = await fetch(`${restBasePath}${entity}/${id}`);
-  const data = await response.json();
+  const data = await _fetch(`${restBasePath}${entity}/${id}`);
   return data;
 }
 
 export async function post(entity, dataToSend) {
-  const response = await fetch(`${restBasePath}${entity}`, {
+  const status = await _fetch(`${restBasePath}${entity}`, {
     method: "POST",
     headers: { "Content-Type": "application/json", },
     body: JSON.stringify(dataToSend),
 
   });
-  const status = await response.json();
   return status;
 }
 
 export async function put(entity, id, dataToSend) {
-  const response = await fetch(`${restBasePath}${entity}${id ? '/' + id : ''}`, {
+  const status = await _fetch(`${restBasePath}${entity}${id ? '/' + id : ''}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json", },
     body: JSON.stringify(dataToSend),
 
   });
-  const status = await response.json();
   return status;
 }
 
 export async function remove(entity, id) {
-  const response = await fetch(`${restBasePath}${entity}${id ? '/' + id : ''}`, {
+  const status = await _fetch(`${restBasePath}${entity}${id ? '/' + id : ''}`, {
     method: 'DELETE'
   });
-  const status = await response.json();
   return status;
 }
