@@ -20,6 +20,8 @@ async function start() {
   `;
   // Render the navbar
   renderNavBar();
+  // Get the logged in user and store in globalThis
+  globalThis.user = await get('login');
   // Get a list of all artists and store in globalThis
   globalThis.artists = await get('artists');
   // Display 'page' depending on url - SPA frontend routing

@@ -1,5 +1,5 @@
 import formDataCollector from "./utils/formDataCollector.js";
-import { registerOrUpdate, emailAvailable } from "./utils/loginAndRegister.js";
+// import { registerOrUpdate, emailAvailable } from "./utils/loginAndRegister.js";
 import displayPage from "./displayPage.js";
 
 

@@ -1,6 +1,6 @@
 import renderUserMenu from './renderUserMenu.js';
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
-import { checkLoggedIn } from './utils/loginAndRegister.js';
+// import { checkLoggedIn } from './utils/loginAndRegister.js';
 
 // Render the navbar with menu choices + toggle for edit mode
 export default function renderNavBar() {
@@ -14,7 +14,7 @@ export default function renderNavBar() {
   };
 
   // check user role and remove choices not matching the user role
-  const userRole = checkLoggedIn().role || 'visitor';
+  const userRole = (globalThis.user || {}).role || 'visitor';
   for (let key in choices) {
     if (!choices[key].userRoles.includes(userRole)) {
       delete choices[key];

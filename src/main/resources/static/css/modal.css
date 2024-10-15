@@ -1,3 +1,7 @@
 .modal {
   color: black;
 }
+
+button.modal-trigger-btn {
+  display: none;
+}

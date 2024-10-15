@@ -94,8 +94,7 @@ public abstract class LoginAndRegister {
                 return foundUser;
             }
             case "GET" -> {
-                return session.read() == null ?
-                    Map.of("error", "Not logged in") : session.read();
+                return session.read();
             }
             case "DELETE" -> {
                 session.write(null);

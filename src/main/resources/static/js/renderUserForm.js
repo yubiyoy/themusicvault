@@ -1,9 +1,9 @@
 import './eventsForUserForm.js';
-import { checkLoggedIn } from './utils/loginAndRegister.js';
+// import { checkLoggedIn } from './utils/loginAndRegister.js';
 
 // Render a form for registering a user or alter user info
 export default function renderUserForm() {
-  let { id, firstName, lastName, email } = checkLoggedIn();
+  let { id, firstName, lastName, email } = globalThis.user || {};
   let password = id ? '_PASSWORD_NOT_CHANGED' : '';
   return `
     <form name="user">

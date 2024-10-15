@@ -1,4 +1,4 @@
-import { login } from './utils/loginAndRegister.js';
+// import { login } from './utils/loginAndRegister.js';
 import formDataCollector from './utils/formDataCollector.js';
 import waitForModalAnswer from './utils/waitForModalAnswer.js';
 

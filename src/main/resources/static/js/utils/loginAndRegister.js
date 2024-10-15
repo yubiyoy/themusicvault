@@ -1,19 +1,9 @@
-import { get, post, put } from './fetchHelpers.js';
+/*import { get, post, put } from './fetchHelpers.js';
 import renderNavBar from '../renderNavbar.js';
 import displayPage from '../displayPage.js';
 import displayToast from './displayToast.js';
 
 // Functions for registering and updating a user, 
-// checking that a email is available (not used by anaother user),
-// logging in,  logging out and checking who is logged in
-
-// TODO IN FUTURE VERSION: 
-// We should move some of this logic to the backend
-// since it is not safe to have it on the frontend
-// (but this requires a improved knowledge of sessions in Spring)
-
-const salt = "hardToGuess@fsl3183wausoidjdaeaawdan";
-let users = await get('users');
 
 export async function registerOrUpdate(userData, passwordChanged = true) {
   const password = userData.password;
@@ -33,10 +23,6 @@ export async function registerOrUpdate(userData, passwordChanged = true) {
     globalThis.sessionStorage.user = JSON.stringify(foundUser);
     renderNavBar();
   }
-}
-
-export function emailAvailable(email) {
-  return !users.find(user => user.email === email);
 }
 
 export function login(email, password) {
@@ -67,4 +53,4 @@ export function logout() {
 export function checkLoggedIn() {
   return JSON.parse(globalThis.sessionStorage.user || '""')
     || { error: 'Not logged in' };
-}
+}*/
