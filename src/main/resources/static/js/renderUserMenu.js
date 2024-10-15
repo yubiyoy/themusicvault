@@ -1,4 +1,3 @@
-// import { checkLoggedIn, logout } from './utils/loginAndRegister.js';
 import { remove } from './utils/fetchHelpers.js';
 import displayPage from './displayPage.js';
 import renderLoginForm from './renderLoginForm.js';

@@ -12,6 +12,12 @@ public abstract class AclRules {
             // nut an admin role would be easy to add - basically we
             // could whitelist all REST-routes for an admin
 
+            {"POST", "/register", "visitor"},
+            {"PUT", "/register", "user"},
+            {"POST", "/login", "visitor"},
+            {"GET", "/login", "visitor"},
+            {"GET", "/login", "user"},
+            {"DELETE", "/login", "user"},
             {"POST", "/artists", "user"},
             {"GET", "/artists", "visitor"},
             {"GET", "/artists", "user"},
@@ -19,12 +25,14 @@ public abstract class AclRules {
             {"DELETE", "/artists", "user"},
             {"GET", "/artistsWithoutImages", "visitor"},
             {"GET", "/artistsWithoutImages", "user"},
-            {"POST", "/login", "visitor"},
-            {"GET", "/login", "visitor"},
-            {"GET", "/login", "user"},
-            {"DELETE", "/login", "user"},
-            {"POST", "/register", "visitor"},
-            {"PUT", "/register", "user"}
+            {"POST", "/albums", "user"},
+            {"GET", "/albums", "visitor"},
+            {"GET", "/albums", "user"},
+            {"PUT", "/albums", "user"},
+            {"DELETE", "/albums", "user"},
+            {"GET", "/albumsWithoutImages", "visitor"},
+            {"GET", "/albumsWithoutImages", "user"}
+
     };
 
 }

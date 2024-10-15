@@ -1,16 +1,14 @@
 import './eventsForUserForm.js';
-// import { checkLoggedIn } from './utils/loginAndRegister.js';
 
 // Render a form for registering a user or alter user info
 export default function renderUserForm() {
-  let { id, firstName, lastName, email } = globalThis.user || {};
-  let password = id ? '_PASSWORD_NOT_CHANGED' : '';
+  let { firstName, lastName, email } = globalThis.user || {};
+  let password = globalThis.user ? '_DO_NOT_CHANGE' : '';
   return `
     <form name="user">
-      ${id ? `<input type="hidden" name="id" value="${id}">` : ''}
       <div class="row">
         <div class="col">
-          <h1>${id ? `Edit: ${firstName} ${lastName}` : 'Register'}</h1>
+          <h1>${globalThis.user ? `Edit: ${firstName} ${lastName}` : 'Register'}</h1>
           <label class="form-label mt-4">
             First name:
             <input name="firstName" class="form-control"
@@ -48,7 +46,7 @@ export default function renderUserForm() {
             >
           </label>
           <button type="submit" class="btn btn-secondary my-3 float-end">
-            ${id ? 'Change my info' : 'Register'}
+            ${globalThis.user ? 'Change my info' : 'Register'}
           </button>
         </div>
       </div>

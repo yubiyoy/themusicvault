@@ -1,6 +1,5 @@
 import renderUserMenu from './renderUserMenu.js';
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
-// import { checkLoggedIn } from './utils/loginAndRegister.js';
 
 // Render the navbar with menu choices + toggle for edit mode
 export default function renderNavBar() {

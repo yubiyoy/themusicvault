@@ -3,10 +3,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JacobsWebAppApplication {
+public class JacobsWebApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(JacobsWebAppApplication.class, args);
+        SpringApplication.run(JacobsWebApp.class, args);
     }
 
 }

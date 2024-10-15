@@ -1,7 +1,8 @@
 import formDataCollector from "./utils/formDataCollector.js";
 // import { registerOrUpdate, emailAvailable } from "./utils/loginAndRegister.js";
 import displayPage from "./displayPage.js";
-
+import renderNavBar from "./renderNavbar.js";
+import { post, get, put } from './utils/fetchHelpers.js';
 
 // require that the repeatPasswordField equals the password field
 document.body.addEventListener('keyup', event => {
@@ -16,18 +17,6 @@ document.body.addEventListener('keyup', event => {
   );
 });
 
-// require that the email is not used by another user
-document.body.addEventListener('keyup', event => {
-  const emailField = event.target
-    .closest('form[name="user"] input[name="email"]');
-  if (!emailField) { return; }
-  emailField.setCustomValidity(
-    emailAvailable(emailField.value) ?
-      '' : 'Email not available! Have you registered before?'
-  );
-});
-
-
 // on submit - post the new user via our REST-api
 // or put the changes if we are editing a user
 document.body.addEventListener('submit', async event => {
@@ -39,7 +28,11 @@ document.body.addEventListener('submit', async event => {
   const data = formDataCollector(userForm);
   const { id } = data;
   // post or put the user
-  await registerOrUpdate(data, data.password !== '_PASSWORD_NOT_CHANGED');
+  globalThis.user ?
+    await put('register', '', data) :
+    await post('register', data);
+  globalThis.user = await get('login');
+  renderNavBar();
   // navigate to the artist page
   window.history.pushState(null, null, '/');
   displayPage();

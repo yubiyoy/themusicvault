@@ -26,7 +26,7 @@ export async function post(entity, dataToSend) {
 }
 
 export async function put(entity, id, dataToSend) {
-  const response = await fetch(`${restBasePath}${entity}/${id}`, {
+  const response = await fetch(`${restBasePath}${entity}${id ? '/' + id : ''}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json", },
     body: JSON.stringify(dataToSend),
