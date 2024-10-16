@@ -18,7 +18,7 @@ export function renderArtists(artists) {
 // Render one artist
 export function renderArtist({ id, name, description, base64image }, short) {
   let html = `<div class="card mb-4 artist ${short ? 'short' : ''}" data-id="${id}">
-    <a href="${short ? '/artist-info-' + id : '/'}">
+    <a href="${short ? '/artist-info/' + id : '/'}">
       <img src="${base64image}" class="card-img-top" alt="${name}">
     </a>
     <div class="card-body">
@@ -73,6 +73,6 @@ document.body.addEventListener('click', async event => {
   // get id of artist to remove
   const id = +editArtistButton.closest('.artist[data-id]').getAttribute('data-id');
   // navigate to edit form
-  window.history.pushState(null, null, `edit-artist-${id}`);
+  window.history.pushState(null, null, `edit-artist/${id}`);
   displayPage();
 });

@@ -17,7 +17,7 @@ export default function displayPage() {
     html = renderArtists(artists);
   }
   else if (choice.includes('artist-info')) {
-    let id = +choice.split('-').pop();
+    let id = +choice.split('/').pop();
     let artist = artists.find(artist => artist.id === id);
     html = renderArtist(artist);
   }
@@ -25,7 +25,7 @@ export default function displayPage() {
     html = renderArtistForm();
   }
   else if (choice.includes('edit-artist')) {
-    let id = +choice.split('-').pop();
+    let id = +choice.split('/').pop();
     let artist = artists.find(artist => artist.id === id);
     html = renderArtistForm(artist);
   }
