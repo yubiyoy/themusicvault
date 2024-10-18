@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public  class SQLQuery {
 
-    private JdbcTemplate jdbc;
+    private final JdbcTemplate jdbc;
 
     public SQLQuery(String dbName){
         // read db settings from application.properties

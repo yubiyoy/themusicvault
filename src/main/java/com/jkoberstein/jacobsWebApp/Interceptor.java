@@ -61,7 +61,7 @@ public class Interceptor implements HandlerInterceptor {
             IOUtils.copy(inputStream, response.getOutputStream());
             response.flushBuffer();
             if(log) {
-                System.out.println(" [GET] /index.html statusCode: 200 (changed from 404 error)");
+                System.out.println(" [GET] /index.html [statusCode: 200] (changed from 404 error)");
             }
             return false;
         }

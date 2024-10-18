@@ -14,10 +14,9 @@ export async function get(entity, sort = 'name', size = 1000) {
   const data = await _fetch(`${restBasePath}${entity}?size=${size}&sort=${sort}`);
   return (data || {})._embedded ? data._embedded[entity] : data;
 }
-window.get = get;
 
 export async function getOne(entity, id) {
-  const data = await _fetch(`${restBasePath}${entity}/${id}`);
+  const data = await _fetch(`${restBasePath}${entity}${id ? '/' + id : ''}`);
   return data;
 }
 

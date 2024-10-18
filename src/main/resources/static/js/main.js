@@ -4,7 +4,7 @@ import './utils/noCommasOnArrayToString.js';
 import renderNavBar from './renderNavbar.js';
 import displayPage from './displayPage.js';
 import { renderModalSkeleton } from './utils/waitForModalAnswer.js';
-import { get } from './utils/fetchHelpers.js';
+import { get, getOne } from './utils/fetchHelpers.js';
 
 // Start the application
 async function start() {
@@ -19,7 +19,7 @@ async function start() {
     ${renderModalSkeleton()}
   `;
   // Get the logged in user and store in globalThis
-  globalThis.user = await get('login');
+  globalThis.user = await getOne('login');
   // Get a list of all artists and store in globalThis
   globalThis.artists = await get('artists');
   // Render the navbar
