@@ -42,17 +42,10 @@ public class JacobsWebApp {
         // initialize SQLQuery to work with a specific db
         SQLQuery.initSettings(props);
 
-        // Run the Spring application
+        // Run the Spring application + display startup info
         application.run(args);;
+        displayStartupInfo(dbExists, dbName, props);
 
-        // Display start up message
-        var version = ((String)props.get("spring.application.name")).split("_")[1];
-        System.out.println(AsciiLogo.logo
-            .replace("port", (String)props.get("server.port"))
-            .replace("0.0.0", version)
-            .replace("1.1.1", Objects.requireNonNull(SpringVersion.getVersion())) +
-            (dbExists ? "" : "\n  The database \""+dbName+"\" did not exist and has been created.") + "\n"
-        );
     }
 
     // Check if the database exists
@@ -82,6 +75,17 @@ public class JacobsWebApp {
         catch(IOException e){ throw new RuntimeException(e); }
         // return the props
         return props;
+    }
+
+    // Display startup info
+    private static void displayStartupInfo(boolean dbExists, String dbName, Properties props){
+        var version = ((String)props.get("spring.application.name")).split("_")[1];
+        System.out.println(AsciiLogo.logo
+            .replace("port", (String)props.get("server.port"))
+            .replace("0.0.0", version)
+            .replace("1.1.1", Objects.requireNonNull(SpringVersion.getVersion())) +
+            (dbExists ? "" : "\n  The database \""+dbName+"\" did not exist and has been created.") + "\n"
+        );
     }
 
 }
