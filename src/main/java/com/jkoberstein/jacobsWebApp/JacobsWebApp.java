@@ -1,9 +1,11 @@
 package com.jkoberstein.jacobsWebApp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.SpringVersion;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 @SpringBootApplication
@@ -30,8 +32,14 @@ public class JacobsWebApp {
 
         // Run the Spring application
         application.run(args);;
+
+        // Display start up message
+        var version = ((String)props.get("spring.application.name")).split("_")[1];
         System.out.println(AsciiLogo.logo
-            .replace("port", (String)props.get("server.port")));
+            .replace("port", (String)props.get("server.port"))
+            .replace("0.0.0", version)
+            .replace("1.1.1", Objects.requireNonNull(SpringVersion.getVersion()))
+        );
     }
 
     // Check if the database exists
