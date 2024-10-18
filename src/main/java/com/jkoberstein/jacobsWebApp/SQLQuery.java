@@ -6,16 +6,22 @@ import java.util.Properties;
 
 public  class SQLQuery {
 
-    public static Properties springAppProps;
-    public static String dbName = "";
-    public static JdbcTemplate jdbc;
+    private static Properties springAppProps;
+    private static JdbcTemplate jdbc;
+
+    // Make initial settings (during startup)
+    public static void initSettings(Properties _springAppProps){
+        jdbc = null;
+        springAppProps = _springAppProps;
+    }
 
     public SQLQuery(){
+        if(jdbc != null){ return; }
         var props = springAppProps;
         var builder = DataSourceBuilder.create();
         var pre = "spring.datasource.";
         builder.driverClassName((String)props.get(pre+"driver-class-name"));
-        builder.url((String)props.get(pre+"url")+(dbName.isEmpty() ? "" : "/" + dbName));
+        builder.url((String)props.get(pre+"url"));
         builder.username((String)props.get(pre+"username"));
         builder.password((String)props.get(pre+"password"));
         // create the jdbc driver (only once)

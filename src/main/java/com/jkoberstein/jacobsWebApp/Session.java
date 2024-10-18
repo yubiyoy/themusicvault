@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Session {
 
-    private static final SQLQuery sql = new SQLQuery();
+    private final SQLQuery sql = new SQLQuery();
 
     private final String cookieValue;
 

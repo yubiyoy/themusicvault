@@ -8,12 +8,11 @@ import java.util.Map;
 
 public abstract class LoginAndRegister {
 
-    private static final SQLQuery sql = new SQLQuery();
-
     public static Object register(
             HttpServletRequest request, Session session)
             throws IOException {
 
+        var sql = new SQLQuery();
         var loggedInUser = session.read();
         var reqBody = ReadRequestBody.reader(request);
         if(reqBody.containsKey("error")){return reqBody;}
@@ -58,6 +57,7 @@ public abstract class LoginAndRegister {
             Session session, Map<?,?>... reqBodies)
             throws IOException {
 
+        var sql = new SQLQuery();
         switch (method) {
             case "POST" -> {
                 var calledFromRegister = reqBodies.length > 0;

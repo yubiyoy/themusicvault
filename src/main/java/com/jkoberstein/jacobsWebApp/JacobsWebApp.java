@@ -18,17 +18,29 @@ public class JacobsWebApp {
         // Create the Spring application
         var application = new SpringApplication(JacobsWebApp.class);
 
-        // Get the Spring application properties
+        // Get the Spring application props, extract the db name
+        // + temporarily remove the db from the datasource.url
         var props = getSpringAppProps();
+        var dataUrl =  ((String)props.get("spring.datasource.url"));
+        var parts = dataUrl.split("/");
+        var dataUrlNoDb = dataUrl.substring(0, dataUrl.lastIndexOf("/"));
+        var dbName = parts[parts.length - 1];
+        props.put("spring.datasource.url", dataUrlNoDb);
 
-        // If the database does not exist import our database dump,
-        // otherwise just import a file that selects the correct db
-        var sqlFiles = !dbExists() ?
-            "file:src/main/resources/db-dump/dbDump.sql":
-            "file:src/main/resources/db-dump/useDb.sql";
-        Properties properties = new Properties();
-        properties.put("spring.sql.init.data-locations",sqlFiles);
-        application.setDefaultProperties(properties);
+        // If the database does not exists, import the db dump
+        var dbExists = dbExists(dbName, props);
+        if(!dbExists){
+            var extraProps = new Properties();
+            extraProps.put("spring.sql.init.data-locations",
+                "file:src/main/resources/db-dump/dbDump.sql");
+            application.setDefaultProperties(extraProps);
+        }
+
+        // Add the db name back to the the datasource.url
+        props.put("spring.datasource.url", dataUrlNoDb + "/" + dbName);
+
+        // initialize SQLQuery to work with a specific db
+        SQLQuery.initSettings(props);
 
         // Run the Spring application
         application.run(args);;
@@ -38,23 +50,26 @@ public class JacobsWebApp {
         System.out.println(AsciiLogo.logo
             .replace("port", (String)props.get("server.port"))
             .replace("0.0.0", version)
-            .replace("1.1.1", Objects.requireNonNull(SpringVersion.getVersion()))
+            .replace("1.1.1", Objects.requireNonNull(SpringVersion.getVersion())) +
+            (dbExists ? "" : "\n  The database \""+dbName+"\" did not exist and has been created.") + "\n"
         );
     }
 
     // Check if the database exists
-    private static boolean dbExists(){
-        var dbName = "jacobWebApp";
+    private static boolean dbExists(String dbName, Properties props){
         // query MySQL to see if the db exists
+        SQLQuery.initSettings(props);
         var sql = new SQLQuery();
         var query = "SELECT COUNT(*) AS count "+
             "FROM information_schema.tables WHERE TABLE_SCHEMA=?";
         var result = sql.runOne(query,dbName);
-        // initialize SQLQuery to work with a specific db
-        SQLQuery.dbName = dbName;
-        SQLQuery.jdbc = null;
+        var exists =  ((long)result.get("count")) != 0;
+        // if the db does not exist then create it;
+        if(!exists) {
+            sql.run("CREATE DATABASE IF NOT EXISTS " + dbName);
+        }
         // return if the db exists or not
-        return ((long)result.get("count")) != 0;
+        return exists;
     }
 
     // Read Spring application properties
@@ -65,8 +80,6 @@ public class JacobsWebApp {
             props = PropertiesLoaderUtils.loadProperties(resource);
         }
         catch(IOException e){ throw new RuntimeException(e); }
-        // transfer props to the SQLQuery class
-        SQLQuery.springAppProps = props;
         // return the props
         return props;
     }

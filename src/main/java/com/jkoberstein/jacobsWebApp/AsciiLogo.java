@@ -10,5 +10,5 @@ public class AsciiLogo {
             "  _/ |                                                    | |   | |    ",
             " |__/           Running on http://localhost:port          |_|   |_|    ",
             "            Version: 0.0.0   Spring version: 1.1.1                      "
-    ).replace("*","\\") + "\n";
+    ).replace("*","\\");
 }
