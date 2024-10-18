@@ -33,7 +33,7 @@
 .toast-container {
   position: absolute;
   top: 75px;
-  right: 20px;
+  left: 20px;
 }
 
 .toast-body {

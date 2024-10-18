@@ -1,5 +1,8 @@
 # About my web application:<br>Classic Artists
 
+### Documentation
+[I have made some documentation of the application](/pdfs/flow-spring-app.pdf) (schematics of the database, the backend, REST-routes and the frontend).
+
 ### My workflow
 This is the way I have worked with the project:
 * I work in one GitHub-hosted git repository with both the Spring-based backend and the Vanilla JS based frontend. The frontend files are in src/main/resources/static and I have configured Spring to serve the REST-api on the basePath /api.

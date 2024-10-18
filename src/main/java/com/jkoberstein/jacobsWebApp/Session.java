@@ -11,11 +11,10 @@ import java.util.Map;
 public class Session {
 
     String cookieValue;
-    SQLQuery sql;
+    private static final SQLQuery sql = new SQLQuery("jacobWebApp");
 
     public Session(HttpServletRequest request, HttpServletResponse response){
         cookieValue = getOrSetCookie(request, response);
-        sql = new SQLQuery("jacobWebApp");
     }
 
     public void write(Object value) {

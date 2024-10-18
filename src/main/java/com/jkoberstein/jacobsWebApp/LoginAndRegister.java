@@ -85,7 +85,7 @@ public abstract class LoginAndRegister {
                     ((String)reqBody.get("password")).toCharArray(),
                     ((String)foundUser.get("encrypted_password"))
                 ).verified){
-                    return Map.of("error", "Wrong credentials");
+                    return null;
                 }
 
                 // remove id and encrypted_password from foundUser,
