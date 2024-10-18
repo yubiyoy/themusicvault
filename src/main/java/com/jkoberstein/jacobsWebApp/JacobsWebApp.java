@@ -11,8 +11,8 @@ public class JacobsWebApp {
         // Create the Spring application
         SpringApplication application = new SpringApplication(JacobsWebApp.class);
 
-        // If the db does not exist import our dbDump,
-        // otherwise just run a file that selects the correct db
+        // If the database does not exist import our database dump,
+        // otherwise just import a file that selects the correct db
         var sqlFiles = !dbExists() ?
             "file:src/main/resources/db-dump/dbDump.sql":
             "file:src/main/resources/db-dump/useDb.sql";
