@@ -1,7 +1,6 @@
 package com.jkoberstein.jacobsWebApp;
 import com.google.gson.Gson;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 public abstract class JsonResponse {
 

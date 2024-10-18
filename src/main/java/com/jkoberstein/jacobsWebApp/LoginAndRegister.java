@@ -8,7 +8,7 @@ import java.util.Map;
 
 public abstract class LoginAndRegister {
 
-    private static final SQLQuery sql = new SQLQuery("jacobWebApp");
+    private static final SQLQuery sql = new SQLQuery();
 
     public static Object register(
             HttpServletRequest request, Session session)
