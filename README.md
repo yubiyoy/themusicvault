@@ -9,4 +9,4 @@
 [Schematics of the database, the backend, REST-routes and the frontend](src/main/resources/static/pdfs/flow-spring-app.pdf).
 
 # Important
-See the README.md file in **src/resources/static** for more documentation!
+See the [README.md file](src/main/resources/static/README.md) in **src/resources/static** for more documentation!
