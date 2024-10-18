@@ -1,15 +1,5 @@
-# ************************************************************
-# Sequel Ace SQL dump
-# Version 20074
-#
-# https://sequel-ace.com/
-# https://github.com/Sequel-Ace/Sequel-Ace
-#
-# Host: localhost (MySQL 9.0.1)
-# Database: jacobWebApp
-# Generation Time: 2024-10-12 12:38:47 +0000
-# ************************************************************
-
+CREATE DATABASE IF NOT EXISTS jacobWebApp;
+USE jacobWebApp;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,6 +10,24 @@ SET NAMES utf8mb4;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+# Dump of table albums
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `albums`;
+
+CREATE TABLE `albums` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `spotify_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `base64image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+
 # Dump of table artists
 # ------------------------------------------------------------
 
@@ -28,8 +36,8 @@ DROP TABLE IF EXISTS `artists`;
 CREATE TABLE `artists` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` text,
-  `base64image` longtext,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `base64image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -50,6 +58,45 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table artistsXalbums
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `artistsXalbums`;
+
+CREATE TABLE `artistsXalbums` (
+  `artist_id` bigint NOT NULL,
+  `album_id` bigint NOT NULL,
+  PRIMARY KEY (`artist_id`,`album_id`),
+  KEY `album_id` (`album_id`),
+  CONSTRAINT `album_id` FOREIGN KEY (`album_id`) REFERENCES `albums` (`id`),
+  CONSTRAINT `artist_id` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+
+# Dump of table sessions
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sessions`;
+
+CREATE TABLE `sessions` (
+  `session_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `value` json DEFAULT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `sessions` WRITE;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+
+INSERT INTO `sessions` (`session_id`, `value`)
+VALUES
+	('14552965997680578729245834686821915645471234416952','{\"role\": \"user\", \"email\": \"thomas@nodehill.com\", \"lastName\": \"Frank\", \"firstName\": \"Thomas\"}'),
+	('9144386517616399145630199614597448121122179975362','{\"role\": \"user\", \"email\": \"thomas@nodehill.com\", \"lastName\": \"Frank\", \"firstName\": \"Thomas\"}');
+
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table users
@@ -68,7 +115,29 @@ CREATE TABLE `users` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
+INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `role`, `encrypted_password`)
+VALUES
+	(39,'thomas@nodehill.com','Thomas','Frank','user','$2a$12$/i7UI9mpj.pbqJ6sFUTzyOL54D2JcWoTb2n2kq.fWT1FjbzRRYjgO');
+
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of view albums_without_images
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `albums_without_images`; DROP VIEW IF EXISTS `albums_without_images`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `albums_without_images`
+AS SELECT
+   `albums`.`id` AS `id`,
+   `albums`.`name` AS `name`,
+   `albums`.`description` AS `description`,
+   `albums`.`spotify_link` AS `spotify_link`
+FROM `albums`;
 
 # Dump of view artists_without_images
 # ------------------------------------------------------------

@@ -15,7 +15,7 @@ public class Session {
 
     public Session(HttpServletRequest request, HttpServletResponse response){
         cookieValue = getOrSetCookie(request, response);
-        sql = new SQLQuery();
+        sql = new SQLQuery("jacobWebApp");
     }
 
     public void write(Object value) {

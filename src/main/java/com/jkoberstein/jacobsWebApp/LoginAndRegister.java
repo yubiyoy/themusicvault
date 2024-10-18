@@ -8,7 +8,7 @@ import java.util.Map;
 
 public abstract class LoginAndRegister {
 
-    private static final SQLQuery sql = new SQLQuery();
+    private static final SQLQuery sql = new SQLQuery("jacobWebApp");
 
     public static Object register(
             HttpServletRequest request, Session session)
@@ -74,9 +74,10 @@ public abstract class LoginAndRegister {
                     "SELECT * FROM users WHERE email = ?",
                     reqBody.get("email")
                 );
+
                 // if the user is not found
                 if(foundUser == null){
-                    return Map.of("error", "No such user");
+                    return null;
                 }
 
                 // check that the password is correct

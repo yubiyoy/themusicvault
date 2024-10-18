@@ -9,10 +9,9 @@ import java.util.Properties;
 
 public  class SQLQuery {
 
-    private static JdbcTemplate jdbc;
+    private JdbcTemplate jdbc;
 
-    public SQLQuery(){
-        if(jdbc != null){return;}
+    public SQLQuery(String dbName){
         // read db settings from application.properties
         // (should have been possible to @AutoWire them, but didn't work)
         Properties props;
@@ -24,7 +23,7 @@ public  class SQLQuery {
         var builder = DataSourceBuilder.create();
         var pre = "spring.datasource.";
         builder.driverClassName((String)props.get(pre+"driver-class-name"));
-        builder.url((String)props.get(pre+"url"));
+        builder.url((String)props.get(pre+"url")+(dbName.isEmpty() ? "" : "/" + dbName));
         builder.username((String)props.get(pre+"username"));
         builder.password((String)props.get(pre+"password"));
         // create new jdbc driver
