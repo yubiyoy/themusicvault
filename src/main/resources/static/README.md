@@ -20,7 +20,7 @@ This is the way I have worked with the project:
 
 ### Articles I found and read
 
-#### Sprint Data REST: Building REST routes without Controllers & Services
+#### Spring Data REST: Building REST routes without Controllers & Services
 * https://medium.com/@mertkagan/spring-data-rest-say-goodbye-to-controller-and-service-1acb6c7437f1
 * https://www.baeldung.com/spring-data-rest-intro
 * https://docs.spring.io/spring-data/rest/docs/4.0.6/reference/html
