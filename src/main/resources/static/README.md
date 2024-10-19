@@ -8,7 +8,7 @@ I also documented my workflow and collected links to articles I found and read t
 ### My workflow
 This is the way I have worked with the project:
 * I work in one GitHub-hosted git repository with both the Spring-based backend and the Vanilla JS based frontend. The frontend files are in src/main/resources/static and I have configured Spring to serve the REST-api on the basePath /api.
-* In the backend code I use a combination of **Spring Data Rest** (to create basic REST-api routes for different entities without the need for controllers and service) and a **Spring interceptor** that let me write my own logic for user authentication, user sessions and special routes (like login and registration).
+* In the backend code I use a combination of **Spring Data Rest** (to create basic REST-api routes for different entities without the need for controllers and services) and a **Spring interceptor** that let me write my own logic for user authentication, user sessions and special routes (like login and registration).
 * I use GitHub Desktop to commit my changes to the git repository.
 * I open the whole repository in IntelliJ Idea.
 * I open the frontend folder (src/main/resources/static) with "Open folder" in VSC.
