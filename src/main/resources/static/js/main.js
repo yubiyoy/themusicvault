@@ -30,3 +30,7 @@ async function start() {
 }
 
 start();
+
+// Write startup message to console
+console.log((await (await fetch('/index.html')).text())
+  .split('<!--')[1].split('-->')[0]);
