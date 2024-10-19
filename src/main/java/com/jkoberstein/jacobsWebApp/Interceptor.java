@@ -53,7 +53,7 @@ public class Interceptor implements HandlerInterceptor {
             );
         }
 
-        // Not allowed - finish after logging
+        // Not allowed (405 set previously by Acl check) - now send response
         if(statusCode == 405){
             response.setStatus(405);
             JsonResponse.write(response,Map.of("error","Not allowed."));
