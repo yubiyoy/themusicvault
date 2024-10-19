@@ -19,5 +19,5 @@ public class SystemOutOnOff {
     public static void on(){
         System.setOut(orgOut);
     }
-    
+
 }
