@@ -1,9 +1,9 @@
 # About my web application:<br>Classic Artists
 
 ### Documentation
-[I have made some documentation of the application](/pdfs/flow-spring-app.pdf) (schematics of the database, the backend, REST-routes and the frontend).
+[I have documented](/pdfs/flow-spring-app.pdf) the backend, the database, the REST-routes and the frontend in a schematic way.
 
-I also documented my workflow and collected links to articles I found and read to help me understand different aspects of Spring, as well as frontend development.
+I also documented my workflow and collected links to articles I found along the way, that helped me understand different aspects of Spring, as more about frontend development.
 
 ### My workflow
 This is the way I have worked with the project:
