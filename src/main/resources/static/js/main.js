@@ -31,6 +31,6 @@ async function start() {
 
 start();
 
-// Write startup message to console
-console.log((await (await fetch('/index.html')).text())
-  .split('<!--')[1].split('-->')[0]);
+// Write our startup message to the console
+console.log('%c' + (await (await fetch('/index.html')).text())
+  .split('<!--')[1].split('-->')[0], "font-family:monospace");
