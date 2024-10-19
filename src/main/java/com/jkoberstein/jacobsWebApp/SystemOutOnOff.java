@@ -19,12 +19,5 @@ public class SystemOutOnOff {
     public static void on(){
         System.setOut(orgOut);
     }
-
-    // Print during off
-    public static void print(String str){
-        on();
-        System.out.print(str);
-        off();
-    }
-
+    
 }
