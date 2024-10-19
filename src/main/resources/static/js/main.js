@@ -32,5 +32,7 @@ async function start() {
 start();
 
 // Write our startup message to the console
-console.log('%c' + (await (await fetch('/index.html')).text())
-  .split('<!--')[1].split('-->')[0], "font-family:monospace");
+console.log(
+  '%c' + document.getRootNode().childNodes[1].nodeValue,
+  'font-family:monospace'
+);
