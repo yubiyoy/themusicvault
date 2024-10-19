@@ -1,3 +1,5 @@
+import addEventListener from "./addEventListener.js";
+
 // Show a modal and wait for an answer (call with await)
 export default function waitForModalAnswer(title = 'Modal', content = 'A modal', buttons = []) {
   buttons = buttons.map(x => x.split(':')).map(([text, type]) => ({ text, type }));
@@ -37,8 +39,5 @@ export function renderModalSkeleton() {
 }
 
 // Listen to which button the user clicked in the modal
-document.body.addEventListener('click', event => {
-  const button = event.target.closest('#modal button');
-  if (!button) { return; }
-  globalThis.modalChoice = button.innerText;
-});
+addEventListener('click', '#modal button',
+  button => globalThis.modalChoice = button.innerText);

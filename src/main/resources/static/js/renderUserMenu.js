@@ -3,6 +3,8 @@ import displayPage from './displayPage.js';
 import renderLoginForm from './renderLoginForm.js';
 import renderNavBar from './renderNavbar.js';
 import displayToast from './utils/displayToast.js';
+import addEventListener from './utils/addEventListener.js';
+import navigate from './utils/navigate.js';
 
 // Render the user menu part of the navbar
 export default function renderUserMenu() {
@@ -29,9 +31,7 @@ export default function renderUserMenu() {
 }
 
 // events for login and logout choices
-document.body.addEventListener('click', async event => {
-  const choiceEl = event.target.closest('.user-profile .dropdown-item');
-  if (!choiceEl || choiceEl.getAttribute('href')) { return; }
+addEventListener('click', '.user-profile .dropdown-item', async choiceEl => {
   const choice = choiceEl.innerText;
   // react on choice
   if (choice === 'Login') {
@@ -43,7 +43,6 @@ document.body.addEventListener('click', async event => {
     renderNavBar();
     displayToast('Logged out', 'You successfully logged out!!');
     // navigate to the artist page
-    window.history.pushState(null, null, '/');
-    displayPage();
+    navigate('/');
   }
 });

@@ -3,12 +3,11 @@ import displayPage from "./displayPage.js";
 import renderNavBar from "./renderNavbar.js";
 import { post, get, put } from './utils/fetchHelpers.js';
 import waitForModalAnswer from "./utils/waitForModalAnswer.js";
+import addEventListener from "./utils/addEventListener.js";
+import navigate from "./utils/navigate.js";
 
 // require that the repeatPasswordField equals the password field
-document.body.addEventListener('keyup', event => {
-  const repeatPasswordField = event.target
-    .closest('form[name="user"] input[name="repeatPassword"]');
-  if (!repeatPasswordField) { return; }
+addEventListener('keyup', 'form[name="user"] input[name="repeatPassword"]', repeatPasswordField => {
   const passwordField = document
     .querySelector('form[name="user"] input[name="password"]');
   repeatPasswordField.setCustomValidity(
@@ -19,11 +18,7 @@ document.body.addEventListener('keyup', event => {
 
 // on submit - post the new user via our REST-api
 // or put the changes to the REST-api if we are editing a user
-document.body.addEventListener('submit', async event => {
-  const userForm = event.target.closest('form[name="user"]');
-  if (!userForm) { return; }
-  // do not make hard page reload
-  event.preventDefault();
+addEventListener('submit', 'form[name="user"]', async userForm => {
   // collect the data form the form and post/put it via the REST-api
   const data = formDataCollector(userForm);
   const { id } = data;
@@ -44,6 +39,5 @@ document.body.addEventListener('submit', async event => {
   globalThis.user = await get('login');
   renderNavBar();
   // navigate to the artist page
-  window.history.pushState(null, null, '/');
-  displayPage();
+  navigate('/');
 });

@@ -2,24 +2,20 @@
 import fileToBase64 from "./utils/fileToBase64.js";
 import formDataCollector from "./utils/formDataCollector.js";
 import { post, put } from './utils/fetchHelpers.js'
-import displayPage from "./displayPage.js";
+import addEventListener from "./utils/addEventListener.js";
+import navigate from "./utils/navigate.js";
 
 // on image chosen - encode to base64 and show preview image
-document.body.addEventListener('change', async event => {
-  const fileField = event.target.closest('form[name="artist"] [type="file"]');
-  if (!fileField) { return; }
+addEventListener('change', 'form[name="artist"] [type="file"]', async fileField => {
   const encoded = await fileToBase64(fileField);
   document.querySelector('form[name="artist"] [name="base64image"]').value = encoded;
   document.querySelector('form[name="artist"] img.preview').src = encoded;
 });
 
+
 // on submit - post the new artist via our REST-api
 // or put the changes if we are editing an artist
-document.body.addEventListener('submit', async event => {
-  const artistForm = event.target.closest('form[name="artist"]');
-  if (!artistForm) { return; }
-  // do not make hard page reload
-  event.preventDefault();
+addEventListener('submit', 'form[name="artist"]', async artistForm => {
   // collect the data form the form and post/put it via the REST-api
   const data = formDataCollector(artistForm);
   const { id } = data;
@@ -37,8 +33,7 @@ document.body.addEventListener('submit', async event => {
   // sort artists by name
   globalThis.artists.sort((a, b) => a.name > b.name ? 1 : -1);
   // navigate to the artist page
-  window.history.pushState(null, null, '/');
-  displayPage();
+  navigate('/');
   // scroll the artist into view
   setTimeout(() => {
     document.querySelector(`.artist[data-id="${artistFromDb.id}"]`)

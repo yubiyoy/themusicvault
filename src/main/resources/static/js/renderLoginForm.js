@@ -2,6 +2,7 @@ import renderNavBar from './renderNavbar.js';
 import formDataCollector from './utils/formDataCollector.js';
 import waitForModalAnswer from './utils/waitForModalAnswer.js';
 import displayToast from './utils/displayToast.js';
+import addEventListener from './utils/addEventListener.js';
 import { post } from './utils/fetchHelpers.js';
 
 // Render the login form in a modal and try to login
@@ -45,9 +46,7 @@ export default async function renderLoginForm() {
 }
 
 // Perform the log in if the user presses enter in the password field
-document.body.addEventListener('keyup', event => {
-  let passwordField = event.target.closest('form[name="login"] input[name="password"]');
-  if (!passwordField) { return; }
+addEventListener('keyup', 'form[name="login"] input[name="password"]', (_field, event) => {
   if (event.key === 'Enter') {
     document.querySelector('.modal-footer .btn-primary').click();
   }

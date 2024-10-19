@@ -1,5 +1,6 @@
 import renderUserMenu from './renderUserMenu.js';
 import closeHamburgerBar from './utils/closeHamburgerBar.js';
+import addEventListener from './utils/addEventListener.js';
 
 // Render the navbar with menu choices + toggle for edit mode
 export default function renderNavBar() {
@@ -52,9 +53,7 @@ export default function renderNavBar() {
 }
 
 // Toggle edit mode
-document.body.addEventListener('click', event => {
-  const toggleEditMode = event.target.closest('li.toggle-edit-mode');
-  if (!toggleEditMode) { return; }
+addEventListener('click', 'li.toggle-edit-mode', toggleEditMode => {
   // toggle edit mode
   document.body.classList.toggle('edit-mode');
   closeHamburgerBar();

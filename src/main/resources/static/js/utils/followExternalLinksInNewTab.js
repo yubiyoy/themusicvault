@@ -1,7 +1,6 @@
-// Follow all external links i a new tab
-document.body.addEventListener('click', event => {
-  const link = event.target.closest('a');
-  if (!link) { return; }
-  const external = (link.getAttribute('href') || '').startsWith('http');
-  if (external) { link.setAttribute('target', '_blank'); }
-});
+import addEventListener from "./addEventListener.js";
+
+// Follow all external links in a new tab
+// (external links start with "http")
+addEventListener('click', 'a[href^="http"]',
+  link => link.setAttribute('target', '_blank'));

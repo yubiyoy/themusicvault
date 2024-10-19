@@ -1,5 +1,7 @@
 import displayPage from './displayPage.js';
 import waitForModalAnswer from './utils/waitForModalAnswer.js';
+import addEventListener from './utils/addEventListener.js';
+import navigate from './utils/navigate.js';
 import { remove } from './utils/fetchHelpers.js';
 
 // Render a list of artists
@@ -43,10 +45,7 @@ export function renderArtist({ id, name, description, base64image }, short) {
 }
 
 // Remove an artist
-document.body.addEventListener('click', async event => {
-  const removeArtistButton = event.target.closest('button.removeArtist');
-  if (!removeArtistButton) { return; }
-  // get id of artist to remove
+addEventListener('click', 'button.removeArtist', async removeArtistButton => {
   const id = +removeArtistButton.closest('.artist[data-id]').getAttribute('data-id');
   // get the name of the artist
   const { name } = globalThis.artists.find(artist => artist.id === id);
@@ -62,14 +61,11 @@ document.body.addEventListener('click', async event => {
   // remove from globalThis.artists
   globalThis.artists = globalThis.artists.filter(artist => artist.id !== id);
   // navigate to the artist page
-  window.history.pushState(null, null, '/');
-  displayPage();
+  navigate('/');
 });
 
 // Edit an artist
-document.body.addEventListener('click', async event => {
-  const editArtistButton = event.target.closest('button.editArtist');
-  if (!editArtistButton) { return; }
+addEventListener('click', 'button.editArtist', async editArtistButton => {
   // get id of artist to remove
   const id = +editArtistButton.closest('.artist[data-id]').getAttribute('data-id');
   // navigate to edit form
