@@ -27,7 +27,7 @@ export function renderArtist({ id, name, description, base64image }, short) {
         ${description.split('\n\n').map(para => `<p>${para}</p>`).slice(0, short ? 1 : Infinity)}
       </div>
       ${short ? `
-          <a href="/artist-info-${id}" class="mt-4 btn btn-secondary float-end">Read more</a>
+          <a href="/artist-info/${id}" class="mt-4 btn btn-secondary float-end">Read more</a>
         ` : `
           <a href="/" class="mt-4 btn btn-secondary float-end">Back to all artists</a>
       `}
