@@ -3,9 +3,12 @@
 ### Documentation
 [I have made some documentation of the application](/pdfs/flow-spring-app.pdf) (schematics of the database, the backend, REST-routes and the frontend).
 
+I also documented my workflow and collected links to articles I found and read to help me understand different aspects of Spring and frontend development.
+
 ### My workflow
 This is the way I have worked with the project:
 * I work in one GitHub-hosted git repository with both the Spring-based backend and the Vanilla JS based frontend. The frontend files are in src/main/resources/static and I have configured Spring to serve the REST-api on the basePath /api.
+* In the backend code I use a combination of **Spring Data Rest** (to create basic REST-api routes for different entities without the need for controllers and service) and a **Spring interceptor** that let me write my own logic for user authentication, user sessions and special routes (like login and registration).
 * I use GitHub Desktop to commit my changes to the git repository.
 * I open the whole repository in IntelliJ Idea.
 * I open the frontend folder (src/main/resources/static) with "Open folder" in VSC.
@@ -13,9 +16,9 @@ This is the way I have worked with the project:
 * I have installed the VSC extension **leet-html** in VSC and thus template literal strings containing HTML in my JS code gets highlighted nicely.
 * I use the CSS framework Bootstrap - which saves how much own CSS I have to write and helps me make the frontend application responsive.
 * I use vanilla JS and try to write in a modern style with the code divided into different ES-modules. Application specific modules are found in **src/main/resources/static/js** and smaller, more generic helpers/utilities in **src/main/resources/static/js/utils**. The frontend application is built as an **SPA** (Single Page Application) which means the frontend controls all routing outside the REST-api and does not make hard page reloads when navigating between pages/views.
-* I use a local instance of MySQL and my database name is **jacobWebApp**. I save a database dump of the database as an sql file in the repo, so that I can restore the database if I need to and others can install it. It is stored in src/main/resources/db-dump.
+* I use a local instance of MySQL and my database name is **jacobWebApp**. I save a database dump of the database as an sql file in the repo, and have written backend logic that automatically creates and seeds the db from the database dump if it is missing, when you start up the Spring application.
 
-### Articles I read to help me get started
+### Articles I found and read
 
 #### Sprint Data REST: Building REST routes without Controllers & Services
 * https://medium.com/@mertkagan/spring-data-rest-say-goodbye-to-controller-and-service-1acb6c7437f1
