@@ -1,3 +1,4 @@
+// Display a toast message - currently used on login and logout
 export default function displayToast(title, message) {
   document.querySelector('.toast-container').innerHTML = `
     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -14,4 +15,10 @@ export default function displayToast(title, message) {
   toast.show();
 }
 
-window.displayToast = displayToast;
+// Hide toast message (so it doesn't get in the way of the user menu)
+export function hideToast() {
+  const toastElement = document.querySelector('#liveToast');
+  if (!toastElement) { return; }
+  const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
+  toast.hide();
+}

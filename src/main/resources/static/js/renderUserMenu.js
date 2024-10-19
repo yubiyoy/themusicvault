@@ -1,10 +1,10 @@
 import { remove } from './utils/fetchHelpers.js';
-import displayPage from './displayPage.js';
 import renderLoginForm from './renderLoginForm.js';
 import renderNavBar from './renderNavbar.js';
 import displayToast from './utils/displayToast.js';
 import addEventListener from './utils/addEventListener.js';
 import navigate from './utils/navigate.js';
+import { hideToast } from './utils/displayToast.js';
 
 // Render the user menu part of the navbar
 export default function renderUserMenu() {
@@ -33,6 +33,7 @@ export default function renderUserMenu() {
 // events for login and logout choices
 addEventListener('click', '.user-profile .dropdown-item', async choiceEl => {
   const choice = choiceEl.innerText;
+
   // react on choice
   if (choice === 'Login') {
     renderLoginForm();
@@ -46,3 +47,6 @@ addEventListener('click', '.user-profile .dropdown-item', async choiceEl => {
     navigate('/');
   }
 });
+
+// if the user menu is opened - hide toast if visible
+addEventListener('click', '.user-profile .btn.show', () => hideToast());
