@@ -8,8 +8,7 @@ export default function addEventListener(type, cssSelector, listener) {
     if (type === "submit") { event.preventDefault(); }
     // check for matched element
     const matchedHtmlElement = event.target.closest(cssSelector);
-    if (!matchedHtmlElement) { return; }
-    // run the listener
-    listener(matchedHtmlElement, event);
+    // if the element matches run the listener
+    if (matchedHtmlElement) { listener(matchedHtmlElement, event); }
   });
 }
