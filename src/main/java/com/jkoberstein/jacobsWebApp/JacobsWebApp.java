@@ -5,6 +5,8 @@ import org.springframework.core.SpringVersion;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -28,6 +30,7 @@ public class JacobsWebApp {
         props.put("spring.datasource.url", dataUrlNoDb);
 
         // If the database does not exists, import the db dump
+        SystemOutOnOff.off();
         var dbExists = dbExists(dbName, props);
         if(!dbExists){
             var extraProps = new Properties();
@@ -44,6 +47,7 @@ public class JacobsWebApp {
 
         // Run the Spring application + display startup info
         application.run(args);;
+        SystemOutOnOff.on();
         displayStartupInfo(dbExists, dbName, props);
 
     }
