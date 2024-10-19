@@ -32,6 +32,7 @@ async function start() {
 start();
 
 // Write our startup message to the console
+// (extracted from the html comment at the top of index.html)
 console.log(
   '%c' + document.getRootNode().childNodes[1].nodeValue,
   'font-family:monospace'
