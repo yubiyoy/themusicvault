@@ -11,6 +11,7 @@ import java.util.Properties;
 @SpringBootApplication
 public class JacobsWebApp {
 
+    public static String startupMessage;
     private static final Properties springAppProps = getSpringAppProps();
 
     public static void main(String[] args) {
@@ -82,12 +83,12 @@ public class JacobsWebApp {
     // Display startup info
     private static void displayStartupInfo(boolean dbExists, String dbName, Properties props){
         var version = ((String)props.get("spring.application.name")).split("_")[1];
-        System.out.println(AsciiLogo.logo
+        startupMessage = AsciiLogo.logo
             .replace("port", (String)props.get("server.port"))
             .replace("0.0.0", version)
             .replace("1.1.1", Objects.requireNonNull(SpringVersion.getVersion())) +
-            (dbExists ? "" : "\n  The database \""+dbName+"\" did not exist and has been created.") + "\n"
-        );
+            (dbExists ? "" : "\n  The database \""+dbName+"\" did not exist and has been created.") + "\n";
+        System.out.println(startupMessage);
     }
 
 }

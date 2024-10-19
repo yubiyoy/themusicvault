@@ -1,12 +1,12 @@
 package com.jkoberstein.jacobsWebApp;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.HandlerInterceptor;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.Map;
 
@@ -39,6 +39,12 @@ public class Interceptor implements HandlerInterceptor {
         var url = request.getRequestURI();
         var statusCode = response.getStatus();
 
+        // Set utf-8 encoding of response
+        response.setCharacterEncoding("UTF-8");
+
+        // Check all REST-routes against Acl rules
+        if(!routeAllowedByAcl(method,url,userRole)){ statusCode = 405; }
+
         // Log requests to the REST-api
         if(log){
             System.out.println(
@@ -47,20 +53,22 @@ public class Interceptor implements HandlerInterceptor {
             );
         }
 
-        // Check all REST-routes against Acl rules
-        if(!routeAllowedByAcl(method,url,userRole)){
+        // Not allowed - finish after logging
+        if(statusCode == 405){
             response.setStatus(405);
             JsonResponse.write(response,Map.of("error","Not allowed."));
             return false;
         }
 
-        // If GET and 404 then return the index.html file contents (SPA-style)
-        if(method.equals("GET") && statusCode == 404){
+        // If  GET and index.html or 404 then return the index.html file contents (SPA-style)
+        // (with our startup message inserted as a comment)
+        if(method.equals("GET") && (statusCode == 404 || url.equals("/index.html"))){
             response.setStatus(200);
-            InputStream inputStream = new FileInputStream(getPathToIndexHtml());
-            IOUtils.copy(inputStream, response.getOutputStream());
-            response.flushBuffer();
-            if(log) {
+            var stream = new FileInputStream(getPathToIndexHtml());
+            var indexHtml = IOUtils.toString(stream, StandardCharsets.UTF_8);
+            indexHtml = indexHtml.replace("[comment]",JacobsWebApp.startupMessage);
+            response.getWriter().write(indexHtml);
+            if(log && statusCode == 404) {
                 System.out.println(" [GET] /index.html [statusCode: 200] (changed from 404 error)");
             }
             return false;

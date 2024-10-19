@@ -12,7 +12,7 @@ async function start() {
   document.body.innerHTML = `
     <header></header>
     <main class="container mt-5"></main>
-    <footer class="text-center py-3 mt-3">
+    <footer class="text-center py-3 mt-4">
       © Jacob Koberstein Productions ${new Date().getFullYear()}
     </footer>
     <div class="toast-container"></div>
