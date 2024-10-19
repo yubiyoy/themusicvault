@@ -12,7 +12,6 @@ addEventListener('change', 'form[name="artist"] [type="file"]', async fileField 
   document.querySelector('form[name="artist"] img.preview').src = encoded;
 });
 
-
 // on submit - post the new artist via our REST-api
 // or put the changes if we are editing an artist
 addEventListener('submit', 'form[name="artist"]', async artistForm => {
