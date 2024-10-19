@@ -41,7 +41,7 @@ addEventListener('click', '.user-profile .dropdown-item', async choiceEl => {
     await remove('login');
     globalThis.user = null;
     renderNavBar();
-    displayToast('Logged out', 'You successfully logged out!!');
+    displayToast('Logged out', 'You successfully logged out!');
     // navigate to the artist page
     navigate('/');
   }
