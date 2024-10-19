@@ -3,7 +3,7 @@
 ### Documentation
 [I have made some documentation of the application](/pdfs/flow-spring-app.pdf) (schematics of the database, the backend, REST-routes and the frontend).
 
-I also documented my workflow and collected links to articles I found and read to help me understand different aspects of Spring and frontend development.
+I also documented my workflow and collected links to articles I found and read to help me understand different aspects of Spring, as well as frontend development.
 
 ### My workflow
 This is the way I have worked with the project:
