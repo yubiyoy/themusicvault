@@ -62,13 +62,13 @@ https://developer.mozilla.org/en-US/docs/Web/API/FileReader
 #### Google Webfonts Helper: Self hosting of Google fonts
 https://gwfh.mranftl.com/fonts
 
+#### Embedding Spotify album links / Spotify Player
+https://developer.spotify.com/documentation/embeds
+
 ### Tool for base64-encoding images
 Until I got the image upload in place I used this online tool for conversion to base64 of jpgs:
 https://www.base64-image.de
 
 ### Data collected from
 * Text and images from https://www.discogs.com and https://prezi.com are used in the DB.
-
-### Idea for albums
-Save an Spotify embed link in the database and use code like the one shown here:
-* https://www.spotembed.com to embed a player.
+* Album images from: https://bendodson.com/projects/itunes-artwork-finder

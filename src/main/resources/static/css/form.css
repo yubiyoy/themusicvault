@@ -19,9 +19,17 @@ img.preview {
   border-radius: 10px;
 }
 
+img.preview.album {
+  aspect-ratio: 1;
+}
+
 @media (min-width: 992px) {
   img.preview {
     width: 40%;
+  }
+
+  img.preview.album {
+    width: min(300px, 40%);
   }
 
   input[type="file"] {

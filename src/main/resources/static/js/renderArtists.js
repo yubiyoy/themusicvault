@@ -18,16 +18,27 @@ export function renderArtists(artists) {
 }
 
 // Render one artist
-export function renderArtist({ id, name, description, base64image }, short) {
+export function renderArtist({ id, name, description, base64image, albums }, short) {
   let html = `<div class="card mb-4 artist ${short ? 'short' : ''}" data-id="${id}">
     <a href="${short ? '/artist-info/' + id : '/'}">
-      <img src="${base64image}" class="card-img-top" alt="${name}">
+      <img src="${base64image}" class="card-img-top main" alt="${name}">
     </a>
     <div class="card-body">
       <h5 class="card-title">${name}</h5>
       <div class="description">
         ${description.split('\n\n').map(para => `<p>${para}</p>`).slice(0, short ? 1 : Infinity)}
       </div>
+      ${!short && albums ? `
+        <div class="artist-albums">
+          <h3>${albums.length < 2 ? 'A good album' : 'Some good albums'} with ${name}</h3>
+          ${albums.map(({ id, base64image, name }) => /*html*/`
+            <div class="artist-album">
+              <a href="/album-info/${id}"><img src="${base64image}"></a>
+              <p>${name}</p>
+            </div>
+          `)}
+        </div>
+      ` : ''}
       ${short ? `
           <a href="/artist-info/${id}" class="mt-4 btn btn-secondary float-end">Read more</a>
         ` : `
@@ -66,9 +77,9 @@ addEventListener('click', 'button.removeArtist', async removeArtistButton => {
 
 // Edit an artist
 addEventListener('click', 'button.editArtist', async editArtistButton => {
-  // get id of artist to remove
+  // get id of artist to edit
   const id = +editArtistButton.closest('.artist[data-id]').getAttribute('data-id');
   // navigate to edit form
-  window.history.pushState(null, null, `edit-artist/${id}`);
+  window.history.pushState(null, null, `/edit-artist/${id}`);
   displayPage();
 });

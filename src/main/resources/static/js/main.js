@@ -5,6 +5,7 @@ import renderNavBar from './renderNavbar.js';
 import displayPage from './displayPage.js';
 import { renderModalSkeleton } from './utils/waitForModalAnswer.js';
 import { get, getOne } from './utils/fetchHelpers.js';
+import addRelations from './utils/addRelations.js';
 
 // Start the application
 async function start() {
@@ -22,6 +23,11 @@ async function start() {
   globalThis.user = await getOne('login');
   // Get a list of all artists and store in globalThis
   globalThis.artists = await get('artists');
+  // Get a list of all albums and store in globalThis
+  globalThis.albums = await get('albums');
+  // Get a list of all relations between artists and albums
+  // and add relations between artists and albums
+  addRelations(await get('artistXAlbums'));
   // Render the navbar
   renderNavBar();
   // Display 'page' depending on url - SPA frontend routing

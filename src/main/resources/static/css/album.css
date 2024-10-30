@@ -1,15 +1,44 @@
-.artist img.main {
+.album .img-holder {
   object-fit: cover;
-  aspect-ratio: 30/9;
-  object-position: 50% 40%;
+  padding: 15px;
 }
 
-.artist.short img {
-  object-position: 50% 50%;
-  aspect-ratio: 16/9;
+.album .img-holder img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 15px;
 }
 
-.artist.short .description p {
+.spotify-playlist-frame {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.album .img-holder img {
+  width: calc(50% - 10px);
+}
+
+.spotify-frame-holder {
+  overflow: hidden;
+  float: right;
+  width: calc(50% - 10px);
+  border-radius: 15px;
+}
+
+.img-holder.small .spotify-frame-holder {
+  float: none;
+  width: 100%;
+}
+
+.img-holder.small img {
+  display: none;
+}
+
+.spotify-frame-holder.small img {
+  width: 100px !important;
+}
+
+.album.short .description p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -18,64 +47,64 @@
   text-overflow: ellipsis;
 }
 
-.artist .card-title {
+.album .card-title {
   font-family: 'Protest Strike';
   font-size: 24px;
 }
 
-.artist .description {
+.album .description {
   min-height: 78px;
 }
 
 @media (min-width: 1200px) {
-  .artist:not(.short) .description {
+  .album:not(.short) .description {
     columns: 2;
     column-gap: 30px;
     line-height: 160%;
     font-size: 18px;
   }
 
-  .artist .card-title {
+  .album .card-title {
     font-size: 30px;
   }
 }
 
-.artist-albums {
+.album-artists {
   width: 100%;
   content: "";
   display: table;
   clear: both;
 }
 
-.artist-albums h3 {
+.album-artists h3 {
   margin-top: 20px;
   font-family: 'Protest Strike';
 }
 
-.artist-album {
+.album-artist {
   width: calc(33.33% - 20px);
   float: left;
 }
 
-.artist-album {
+.album-artist {
   margin-left: 20px;
   border-radius: 15px;
   background-color: black;
 }
 
-.artist-album:first-of-type {
+.album-artist:first-of-type {
   margin-left: 0;
 }
 
-.artist-album img {
+.album-artist img {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 16/9;
   object-fit: cover;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
 
-.artist-album p {
+.album-artist p {
   font-family: 'Protest Strike';
   color: white;
   text-align: center;

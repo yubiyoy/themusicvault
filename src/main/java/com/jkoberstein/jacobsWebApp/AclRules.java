@@ -31,8 +31,9 @@ public abstract class AclRules {
             {"PUT", "/albums", "user"},
             {"DELETE", "/albums", "user"},
             {"GET", "/albumsWithoutImages", "visitor"},
-            {"GET", "/albumsWithoutImages", "user"}
-
+            {"GET", "/albumsWithoutImages", "user"},
+            {"GET", "/artistXAlbums", "visitor"},
+            {"GET", "/artistXAlbums", "user"}
     };
 
 }
