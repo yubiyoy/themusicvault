@@ -2,7 +2,9 @@ import './eventsForAlbumForm.js';
 
 // Render a form for adding or editing album info
 export default function renderAlbumForm(album = {}) {
-  let { id, name, description, base64image, spotifyLink } = album;
+  let { artists: allArtists } = globalThis;
+  let { id, name, description, base64image, spotifyLink, artists } = album;
+  artists = artists || [];
   return `
     <form name="album">
       ${id ? `<input type="hidden" name="id" value="${id}">` : ''}
@@ -12,7 +14,7 @@ export default function renderAlbumForm(album = {}) {
           <label class="form-label mt-4">
             Album name:
             <input name="name" class="form-control"
-              required minlength="2" placeholder="album name"
+              required minlength="2" placeholder="Album name"
               value="${name || ''}"
             >
           </label>
@@ -22,6 +24,14 @@ export default function renderAlbumForm(album = {}) {
               required minlength="2" placeholder="Spotify link"
               value="${spotifyLink || ''}"
             >
+          </label>
+          <label>
+            Artist(s):
+            <select multiple name="artists">
+              ${allArtists.map(({ name }) => /*html*/`
+              <option ${artists.find(x => x.name === name) ? 'selected' : ''}>${name}</option>
+            `)}
+            </select>
           </label>
           <label class="form-label mt-4">
             ${id ? 'Change image:' : 'Choose an image:'}

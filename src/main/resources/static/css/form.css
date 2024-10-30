@@ -1,9 +1,15 @@
 label,
-input {
+input,
+select {
   font-family: var(--bs-font-sans-serif);
 }
 
 label {
+  width: 100%;
+}
+
+select {
+  display: block;
   width: 100%;
 }
 

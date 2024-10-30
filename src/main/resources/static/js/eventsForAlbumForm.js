@@ -17,6 +17,10 @@ addEventListener('change', 'form[name="album"] [type="file"]', async fileField =
 addEventListener('submit', 'form[name="album"]', async albumForm => {
   // collect the data form the form and post/put it via the REST-api
   const data = formDataCollector(albumForm);
+  console.log(data);
+  // and the selected artists
+
+  return;
   const { id } = data;
   // post or put the new album and remember they
   let albumFromDb = !id ?
