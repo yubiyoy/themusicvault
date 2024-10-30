@@ -2,7 +2,8 @@ import displayPage from './displayPage.js';
 import waitForModalAnswer from './utils/waitForModalAnswer.js';
 import addEventListener from './utils/addEventListener.js';
 import navigate from './utils/navigate.js';
-import { remove } from './utils/fetchHelpers.js';
+import addRelations from './utils/addRelations.js';
+import { get, remove } from './utils/fetchHelpers.js';
 
 // Render a list of artists
 export function renderArtists(artists) {
@@ -67,6 +68,12 @@ addEventListener('click', 'button.removeArtist', async removeArtistButton => {
     ['Cancel:secondary', 'Remove:danger']
   );
   if (answer !== 'Remove') { return; }
+  // we need to remove any relations to albums first (otherwise artist removal fails)
+  for (let relation of globalThis.artistXAlbums) {
+    relation.artistId === id && await remove('artistXAlbums', relation.id);
+  }
+  globalThis.artistXAlbums = await get('artistXAlbums')
+  addRelations(globalThis.artistXAlbums);
   // remove the artist via the REST-api
   await remove('artists', id);
   // remove from globalThis.artists

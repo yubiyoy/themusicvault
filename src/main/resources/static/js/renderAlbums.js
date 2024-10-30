@@ -3,7 +3,8 @@ import renderSpotifyPlaylist from './renderSpotifyPlaylist.js';
 import waitForModalAnswer from './utils/waitForModalAnswer.js';
 import addEventListener from './utils/addEventListener.js';
 import navigate from './utils/navigate.js';
-import { remove } from './utils/fetchHelpers.js';
+import addRelations from './utils/addRelations.js';
+import { get, remove } from './utils/fetchHelpers.js';
 
 // Render a list of albums
 export function renderAlbums(albums) {
@@ -30,7 +31,7 @@ export function renderAlbum({ id, name, description, base64image, spotifyLink, a
     </a>
     <div class="card-body">
       <h6 class="album-artist-names">${artists.map(({ id, name }) =>
-        /*html*/`<a href="/artist-info/${id}">${name}</a>`).sort().join(', ')}</h6>
+        /*html*/`<a href="/artist-info/${id}">${name}</a>`).sort().join(', ')}&nbsp;</h6>
       <h5 class="card-title">${name}</h5>
       <div class="description">
         ${description.split('\n\n').map(para => `<p>${para}</p>`).slice(0, short ? 1 : Infinity)}
@@ -74,12 +75,19 @@ addEventListener('click', 'button.removeAlbum', async removealbumButton => {
     ['Cancel:secondary', 'Remove:danger']
   );
   if (answer !== 'Remove') { return; }
+  // we need to remove any relations to artists first (otherwise album removal fails)
+  for (let relation of globalThis.artistXAlbums) {
+    relation.albumId === id && await remove('artistXAlbums', relation.id);
+  }
+  globalThis.artistXAlbums = await get('artistXAlbums')
+  addRelations(globalThis.artistXAlbums);
   // remove the album via the REST-api
   await remove('albums', id);
+  console.log("FANNN")
   // remove from globalThis.albums
   globalThis.albums = globalThis.albums.filter(album => album.id !== id);
   // navigate to the album page
-  navigate('/');
+  navigate('/albums');
 });
 
 // Edit an album
