@@ -27,7 +27,8 @@ async function start() {
   globalThis.albums = await get('albums');
   // Get a list of all relations between artists and albums
   // and add relations between artists and albums
-  addRelations(await get('artistXAlbums'));
+  globalThis.artistXAlbums = await get('artistXAlbums')
+  addRelations(globalThis.artistXAlbums);
   // Render the navbar
   renderNavBar();
   // Display 'page' depending on url - SPA frontend routing

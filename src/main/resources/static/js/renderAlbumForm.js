@@ -2,6 +2,7 @@ import './eventsForAlbumForm.js';
 
 // Render a form for adding or editing album info
 export default function renderAlbumForm(album = {}) {
+  let isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
   let { artists: allArtists } = globalThis;
   let { id, name, description, base64image, spotifyLink, artists } = album;
   artists = artists || [];
@@ -25,11 +26,16 @@ export default function renderAlbumForm(album = {}) {
               value="${spotifyLink || ''}"
             >
           </label>
-          <label>
+          <label class="form-label mt-4 select-artists">
             Artist(s):
+            <span>(${isMac ? 'Cmd + click' : 'Ctrl + click'} to select multiple artists)</span>
             <select multiple name="artists">
-              ${allArtists.map(({ name }) => /*html*/`
-              <option ${artists.find(x => x.name === name) ? 'selected' : ''}>${name}</option>
+              ${allArtists.map(({ id, name }) => /*html*/`
+              <option
+                value="${id}" 
+                ${artists.find(x => x.name === name) ? 'selected' : ''}>
+                  ${name}
+                </option>
             `)}
             </select>
           </label>

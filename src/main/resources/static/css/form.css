@@ -29,6 +29,12 @@ img.preview.album {
   aspect-ratio: 1;
 }
 
+label.select-artists span {
+  display: block;
+  font-size: 85%;
+  margin: 10px 0;
+}
+
 @media (min-width: 992px) {
   img.preview {
     width: 40%;
