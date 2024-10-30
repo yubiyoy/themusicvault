@@ -22,7 +22,9 @@ export function renderArtists(artists) {
 export function renderArtist({ id, name, description, base64image, albums }, short) {
   let html = `<div class="card mb-4 artist ${short ? 'short' : ''}" data-id="${id}">
     <a href="${short ? '/artist-info/' + id : '/'}">
-      <img src="${base64image}" class="card-img-top main" alt="${name}">
+      <div class="img-holder">
+        <img src="${base64image}" class="card-img-top main" alt="${name}">
+      </div>
     </a>
     <div class="card-body">
       <h5 class="card-title">${name}</h5>
@@ -34,8 +36,10 @@ export function renderArtist({ id, name, description, base64image, albums }, sho
           <h3>${albums.length < 2 ? 'A good album' : 'Some good albums'} with ${name}:</h3>
           ${albums.map(({ id, base64image, name }) => /*html*/`
             <div class="artist-album">
-              <a href="/album-info/${id}"><img src="${base64image}"></a>
-              <p>${name}</p>
+              <a href="/album-info/${id}">
+                <img src="${base64image}">
+                <p>${name}</p>
+              </a>
             </div>
           `)}
         </div>

@@ -18,6 +18,9 @@ public class Album {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "year")
+    private int year;
+
     @Column(name = "description", columnDefinition="TEXT")
     private String description;
 

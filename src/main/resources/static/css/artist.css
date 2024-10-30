@@ -1,3 +1,8 @@
+.artist .img-holder {
+  border-top-left-radius: var(--bs-card-border-radius);
+  border-top-right-radius: var(--bs-card-border-radius);
+}
+
 .artist img.main {
   object-fit: cover;
   aspect-ratio: 30/9;
@@ -27,6 +32,18 @@
   min-height: 78px;
 }
 
+.artist.short .img-holder {
+  overflow: hidden;
+}
+
+.artist.short .img-holder img {
+  transition: transform 0.5s;
+}
+
+.artist.short .img-holder:hover img {
+  transform: scale(1.1);
+}
+
 @media (min-width: 1200px) {
   .artist:not(.short) .description {
     columns: 2;
@@ -53,11 +70,15 @@
 }
 
 .artist-album {
-  width: calc(33.33% - 20px);
+  width: calc(33.33% - 14px);
   float: left;
   margin-left: 20px;
   border-radius: 15px;
   background-color: black;
+}
+
+.artist-album a {
+  text-decoration: none;
 }
 
 .artist-album:first-of-type {
@@ -65,11 +86,11 @@
 }
 
 .artist-album img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
 }
 
 .artist-album p {

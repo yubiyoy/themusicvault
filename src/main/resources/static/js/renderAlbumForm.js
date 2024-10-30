@@ -4,7 +4,7 @@ import './eventsForAlbumForm.js';
 export default function renderAlbumForm(album = {}) {
   let isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
   let { artists: allArtists } = globalThis;
-  let { id, name, description, base64image, spotifyLink, artists } = album;
+  let { id, name, year, description, base64image, spotifyLink, artists } = album;
   artists = artists || [];
   return `
     <form name="album">
@@ -17,6 +17,13 @@ export default function renderAlbumForm(album = {}) {
             <input name="name" class="form-control"
               required minlength="2" placeholder="Album name"
               value="${name || ''}"
+            >
+          </label>
+            <label class="form-label mt-4">
+            Released (year):
+            <input name="year" type="number" class="form-control"
+              required minlength="4" maxlength="4" placeholder="Year"
+              value="${year || ''}"
             >
           </label>
           <label class="form-label mt-4">

@@ -51,11 +51,14 @@
   font-size: 22px;
 }
 
+.album-artist-names {
+  font-size: 110%;
+  font-family: 'Protest Strike';
+}
+
 .album-artist-names a {
   color: #000;
   text-decoration: none;
-  font-size: 110%;
-  font-family: 'Protest Strike';
 }
 
 .album .description {
@@ -92,11 +95,15 @@
 }
 
 .album-artist {
-  width: calc(33.33% - 20px);
+  width: calc(33.33% - 14px);
   float: left;
   margin-left: 20px;
   border-radius: 15px;
   background-color: black;
+}
+
+.album-artist a {
+  text-decoration: none;
 }
 
 .album-artist:first-of-type {
@@ -107,8 +114,6 @@
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
 }
 
 .album-artist p {
@@ -118,6 +123,21 @@
   margin: 0;
   padding: 5px;
   font-size: 120%;
+}
+
+
+.album-artist-img-holder {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+
+.album-artist-img-holder img {
+  transition: transform 0.5s;
+}
+
+.album-artist-img-holder:hover img {
+  transform: scale(1.1);
 }
 
 @media (max-width: 767.98px) {
