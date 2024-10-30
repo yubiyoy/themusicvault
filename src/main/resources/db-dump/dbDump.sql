@@ -1,16 +1,3 @@
-# ************************************************************
-# Sequel Ace SQL dump
-# Version 20074
-#
-# https://sequel-ace.com/
-# https://github.com/Sequel-Ace/Sequel-Ace
-#
-# Host: localhost (MySQL 9.0.1)
-# Database: jacobWebApp
-# Generation Time: 2024-10-30 21:43:20 +0000
-# ************************************************************
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
