@@ -61,7 +61,11 @@
   text-decoration: none;
 }
 
-.album .description {
+.album-artist-names a:hover {
+  color: #444;
+}
+
+.album.short .description {
   min-height: 130px;
 }
 
@@ -138,6 +142,14 @@
 
 .album-artist-img-holder:hover img {
   transform: scale(1.1);
+}
+
+.album.short .img-holder img {
+  transition: filter 1s;
+}
+
+.album.short .img-holder:hover img {
+  filter: saturate(1.5);
 }
 
 @media (max-width: 767.98px) {
