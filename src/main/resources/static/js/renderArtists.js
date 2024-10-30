@@ -30,7 +30,7 @@ export function renderArtist({ id, name, description, base64image, albums }, sho
       </div>
       ${!short && albums ? `
         <div class="artist-albums">
-          <h3>${albums.length < 2 ? 'A good album' : 'Some good albums'} with ${name}</h3>
+          <h3>${albums.length < 2 ? 'A good album' : 'Some good albums'} with ${name}:</h3>
           ${albums.map(({ id, base64image, name }) => /*html*/`
             <div class="artist-album">
               <a href="/album-info/${id}"><img src="${base64image}"></a>

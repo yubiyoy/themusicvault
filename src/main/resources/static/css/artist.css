@@ -55,9 +55,6 @@
 .artist-album {
   width: calc(33.33% - 20px);
   float: left;
-}
-
-.artist-album {
   margin-left: 20px;
   border-radius: 15px;
   background-color: black;
@@ -82,4 +79,12 @@
   margin: 0;
   padding: 5px;
   font-size: 120%;
+}
+
+@media (max-width: 767.98px) {
+  .artist-album {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+  }
 }

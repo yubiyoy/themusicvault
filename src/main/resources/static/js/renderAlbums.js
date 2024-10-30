@@ -34,7 +34,7 @@ export function renderAlbum({ id, name, description, base64image, spotifyLink, a
       </div>
       ${!short && artists ? `
         <div class="album-artists">
-          <h3>Read more about the artist${artists.length < 2 ? '' : 's'}</h3>
+          <h3>Read more about the artist${artists.length < 2 ? '' : 's'}:</h3>
           ${artists.map(({ id, name, base64image }) => /*html*/`
             <div class="album-artist">
               <a href="/artist-info/${id}"><img src="${base64image}"></a>
