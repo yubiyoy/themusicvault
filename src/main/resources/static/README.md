@@ -1,4 +1,4 @@
-# About my web application:<br>Classic Artists
+# About my web application:<br>The Music Vault
 
 ### Documentation
 [I have documented](/pdfs/flow-spring-app.pdf) the backend, the database, the REST-routes and the frontend in a schematic way.
