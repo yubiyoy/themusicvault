@@ -1,5 +1,33 @@
+.navbar .nav-link {
+  color: #ffecd1;
+  /* navbar menu färg*/
+}
+
+.navbar .nav-link.active {
+  text-decoration: underline;
+  color: #faf0e4;
+}
+
+.navbar .nav-link:hover {
+  color: #faf0e4;
+  transition: color 2s;
+}
+
+
 .btn {
+  color: #ffecd1;
   font-family: var(--bs-body-font-family);
+}
+
+.btn-info {
+  background-color: #104607;
+  border: 1px solid #104607;
+}
+
+.btn-info:hover {
+  background-color: #1b6b0d;
+  border: 1px solid #104607;
+  color: #fff;
 }
 
 .navbar,
@@ -10,6 +38,7 @@
 .navbar-brand {
   font-family: 'Spicy Rice';
   font-size: 30px;
+  color: #ffecd1 !important;
 }
 
 .btn-secondary:hover {
@@ -19,4 +48,8 @@
 
 .nav-link {
   font-size: 18px !important;
+}
+
+.navbar {
+  background-color: #181c21;
 }

@@ -20,6 +20,7 @@ export function renderAlbums(albums) {
 
 // Render one album
 export function renderAlbum({ id, name, description, base64image, spotifyLink, artists }, short) {
+  artists = artists || [];
   let html = `<div class="card mb-4 album ${short ? 'short' : ''}" data-id="${id}">
     <a href="${short ? '/album-info/' + id : '/albums'}">
       <div class="img-holder">
@@ -28,6 +29,8 @@ export function renderAlbum({ id, name, description, base64image, spotifyLink, a
       </div>
     </a>
     <div class="card-body">
+      <h6 class="album-artist-names">${artists.map(({ id, name }) =>
+        /*html*/`<a href="/artist-info/${id}">${name}</a>`).sort().join(', ')}</h6>
       <h5 class="card-title">${name}</h5>
       <div class="description">
         ${description.split('\n\n').map(para => `<p>${para}</p>`).slice(0, short ? 1 : Infinity)}

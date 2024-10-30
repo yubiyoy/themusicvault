@@ -81,6 +81,10 @@
   font-size: 120%;
 }
 
+.artist:not(.short) img[alt="Nujabes"].main {
+  object-position: 50% 70%;
+}
+
 @media (max-width: 767.98px) {
   .artist-album {
     width: 100%;

@@ -25,7 +25,7 @@ export default function renderNavBar() {
     ${renderUserMenu()}
     <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand px-2 px-md-4" href="/">Classic Artists</a>
+        <a class="navbar-brand px-2 px-md-4" href="/">The Music Vault</a>
         <button
             class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNav" aria-controls="navbarNav"

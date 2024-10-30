@@ -40,20 +40,26 @@
 
 .album.short .description p {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .album .card-title {
+  font-size: 22px;
+}
+
+.album-artist-names a {
+  color: #000;
+  text-decoration: none;
+  font-size: 110%;
   font-family: 'Protest Strike';
-  font-size: 24px;
 }
 
 .album .description {
-  min-height: 78px;
+  min-height: 130px;
 }
 
 @media (min-width: 1200px) {
@@ -65,8 +71,12 @@
   }
 
   .album .card-title {
-    font-size: 30px;
+    font-size: 24px;
   }
+}
+
+.album .img-holder img {
+  border: 1px solid #ddd;
 }
 
 .album-artists {
