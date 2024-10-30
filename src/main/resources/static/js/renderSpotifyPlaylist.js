@@ -18,17 +18,18 @@ export default function renderSpotifyPlaylist(url) {
 
 // adapt the iframe for different screen sizes
 function resizer() {
-  let frameHolder = document.querySelector('.spotify-frame-holder');
-  if (!frameHolder) { return; }
-  let imgHolder = document.querySelector('.img-holder');
-  let small = (location.pathname.startsWith('/album-info') && window.innerWidth < 768)
-    || (!location.pathname.startsWith('/album-info') && window.innerWidth < 1400)
-  imgHolder.classList[small ? 'add' : 'remove']('small');
-  let width = frameHolder.getBoundingClientRect().width;
-  let frame = document.querySelector('.spotify-playlist-frame');
-  frame.setAttribute('width', width);
-  frame.setAttribute('height', Math.max(352, width));
-  frameHolder.style.height = width + 'px';
+  for (let frameHolder of [...document.querySelectorAll('.spotify-frame-holder')]) {
+    if (!frameHolder) { return; }
+    let imgHolder = frameHolder.closest('.img-holder');
+    let small = (location.pathname.startsWith('/album-info') && window.innerWidth < 768)
+      || (!location.pathname.startsWith('/album-info') && window.innerWidth < 1400)
+    imgHolder.classList[small ? 'add' : 'remove']('small');
+    let width = frameHolder.getBoundingClientRect().width;
+    let frame = frameHolder.querySelector('.spotify-playlist-frame');
+    frame.setAttribute('width', width);
+    frame.setAttribute('height', Math.max(352, width));
+    frameHolder.style.height = width + 'px';
+  }
 }
 
 window.addEventListener('resize', resizer);
