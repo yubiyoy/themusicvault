@@ -13,6 +13,11 @@ body {
   margin: 0;
   background-color: black;
   color: #fff;
+  background-image: url('/images/waves.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 main {
@@ -20,7 +25,8 @@ main {
 }
 
 footer {
-  background-color: var(--header-footer-bg-color)
+  background-color: var(--header-footer-bg-color);
+  color: #ffecd1;
 }
 
 img[src="/images/404.png"] {

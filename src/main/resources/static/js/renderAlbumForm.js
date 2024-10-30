@@ -22,7 +22,7 @@ export default function renderAlbumForm(album = {}) {
           <label class="form-label mt-4">
             Spotify link:
             <input name="spotifyLink" class="form-control"
-              required minlength="2" placeholder="Spotify link"
+              required minlength="50" placeholder="Spotify link"
               value="${spotifyLink || ''}"
             >
           </label>
