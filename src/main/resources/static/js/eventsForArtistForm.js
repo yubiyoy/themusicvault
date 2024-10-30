@@ -30,7 +30,8 @@ addEventListener('submit', 'form[name="artist"]', async artistForm => {
       artistFromDb
     );
   // sort artists by name
-  globalThis.artists.sort((a, b) => a.name > b.name ? 1 : -1);
+  globalThis.artists.sort((a, b) =>
+    a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
   // navigate to the artist page
   navigate('/');
   // scroll the artist into view

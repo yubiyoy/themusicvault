@@ -35,7 +35,8 @@ addEventListener('submit', 'form[name="album"]', async albumForm => {
   // handle artist relations
   await updateArtistRelations(albumFromDb.id, artists);
   // sort albums by name
-  globalThis.albums.sort((a, b) => a.name > b.name ? 1 : -1);
+  globalThis.albums.sort((a, b) =>
+    a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
   // navigate to the album page
   navigate('/albums');
   // scroll the album into view
