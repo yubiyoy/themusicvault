@@ -38,7 +38,7 @@ public class JacobsWebApp {
             application.setDefaultProperties(extraProps);
         }
 
-        // Add the db name back to the the datasource.url
+        // Add the db name back to the datasource.url
         props.put("spring.datasource.url", dataUrlNoDb + "/" + dbName);
 
         // initialize SQLQuery to work with a specific db
