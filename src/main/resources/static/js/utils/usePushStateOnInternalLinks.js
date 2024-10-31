@@ -6,7 +6,7 @@ import navigate from "./navigate.js";
 addEventListener('click', 'a', (link, event) => {
   const href = link.getAttribute('href') || '';
   const internal = !href.startsWith('http');
-  const pdfLink = href.endsWith('.pdf');
+  const pdfLink = href.includes('.pdf');
   pdfLink && link.setAttribute('target', '_blank');
   if (internal && !pdfLink) {
     event.preventDefault();

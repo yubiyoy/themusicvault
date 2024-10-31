@@ -1,7 +1,13 @@
 # About my web application:<br>The Music Vault
 
 ### Documentation
-[I have documented](/pdfs/flow-spring-app.pdf) the backend, the database, the REST-routes and the frontend in a schematic way.
+[I have documented](/pdfs/flow-spring-app.pdf/#navpanes=0&toolbar=0) the backend, the database, the REST-routes and the frontend in a schematic way:
+
+* [Backend: Flow, classes and parts](/pdfs/flow-spring-app.pdf/#navpanes=0&toolbar=0&page=1)
+* [MySQL database: ER Diagram](/pdfs/flow-spring-app.pdf/#navpanes=0&toolbar=0&page=2)
+* [REST Api Routes](/pdfs/flow-spring-app.pdf/#navpanes=0&toolbar=0&page=3)
+* [Frontend - Quick overview & Frontend routing](/pdfs/flow-spring-app.pdf/#navpanes=0&toolbar=0&page=4)
+* [File Statistics, version 0.8.3](/pdfs/flow-spring-app.pdf/#navpanes=0&toolbar=0&page=5)
 
 I also documented my workflow and collected links to articles I found along the way, that helped me understand different aspects of Spring, as more about frontend development.
 
