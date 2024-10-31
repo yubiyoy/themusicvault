@@ -1,5 +1,5 @@
 // Statistics about the repo - Node.js based
-// find Java, JS and CSS files and read file size in LOC and KB
+// find Java, JS and CSS files and read file size in SLOC and KB
 
 const fs = require('fs');
 const path = require('path');
@@ -9,15 +9,15 @@ let basePath = path.join(__dirname, '..', '..', '..', '..');
 let files = fs.readdirSync(basePath, { recursive: true }).filter(x => !x.startsWith('target'));
 logFormatted();
 logFormatted('Java', 'SLOC', 'KB');
-let java = files.filter(x => x.endsWith('.java'))
+files.filter(x => x.endsWith('.java'))
   .map(x => stat(x, x.split('jacobsWebApp/')[1]));
 logFormatted();
 logFormatted('CSS', 'SLOC', 'KB');
-let css = files.filter(x => x.endsWith('.css')).filter(x => !x.includes('/libs/'))
+files.filter(x => x.endsWith('.css')).filter(x => !x.includes('/libs/'))
   .map(x => stat(x, x.split('static/css/')[1]));
 logFormatted();
 logFormatted('JavaScript', 'SLOC', 'KB');
-let js = files.filter(x => x.endsWith('.js')).filter(x => !x.includes('/libs/'))
+files.filter(x => x.endsWith('.js')).filter(x => !x.includes('/libs/'))
   .map(x => stat(x, x.split('static/js/')[1])).filter(x => x);
 logFormatted();
 
