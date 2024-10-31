@@ -8,7 +8,8 @@ public class AsciiLogo {
             "   | | (_| | (_| (_) | |_) *__ **  /*  /  __/ |_) / ____ *| |_) | |_) |",
             "   | |*__,_|*___*___/|_.__/|___/ */  */ *___|_.__/_/    *_* .__/| .__/ ",
             "  _/ |                                                    | |   | |    ",
-            " |__/           Running on http://localhost:port          |_|   |_|    ",
-            "            Version: 0.0.0   Spring version: 1.1.1                      "
+            " |__/                   The Music Vault                   |_|   |_|    ",
+            "                Running on http://localhost:port                       ",
+            "            Version: 0.0.0   Spring version: 1.1.1                     "
     ).replace("*","\\");
 }
