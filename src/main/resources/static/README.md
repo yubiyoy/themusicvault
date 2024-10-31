@@ -93,7 +93,7 @@ I ran Lighthouse a couple of times and improved things suggested by the tool:
  
 After that the lighthouse scores for the start page became quite good:
 
-![Lighthouse score](/images/lighthouse-results.jpg)
+![Lighthouse score](images/lighthouse-results.jpg)
 
 Further performance improvements could be made by:
 * Minifying and combining all JS and CSS before going to production.

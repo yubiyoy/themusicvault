@@ -29,7 +29,7 @@
     width: 50%;
   }
 
-  img[src="/images/lighthouse-results.jpg"] {
+  img[src="images/lighthouse-results.jpg"] {
     width: min(600px, 100%);
   }
 
