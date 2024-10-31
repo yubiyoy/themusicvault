@@ -3,6 +3,6 @@ import com.jkoberstein.jacobsWebApp.entities.ArtistXAlbum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(path="artistXAlbums")
+@RepositoryRestResource(path="artistXalbums")
 public interface ArtistXAlbumRepository extends JpaRepository<ArtistXAlbum,Long> {
 }

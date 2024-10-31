@@ -102,6 +102,7 @@ public class Interceptor implements HandlerInterceptor {
         // Check against all Acl rules
         url = url.replaceFirst("/api","");
         for (var rule : AclRules.whiteList){
+            System.out.println(rule[1]+ " "+url + " " + url.equals(rule[1]));
             if(
                 method.equals(rule[0]) &&
                 userRole.equals(rule[2]) &&
