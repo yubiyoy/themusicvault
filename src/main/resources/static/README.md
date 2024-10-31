@@ -83,7 +83,7 @@ https://www.base64-image.de
 * Text and images from https://www.discogs.com and https://prezi.com are used in the DB.
 * Album images from: https://bendodson.com/projects/itunes-artwork-finder
 
-### Lighthouse score for the start page
+### Lighthouse scores for the start page
 [**Lighthouse**](https://developer.chrome.com/docs/lighthouse) (built into [Crome DevTools](https://developer.chrome.com/docs/devtools)) is a tool for auditing performance, accessibility, best practices and SEO for web applications. 
 
 I ran Lighthouse a couple of times and improved things suggested by the tool:
