@@ -146,7 +146,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `role`, `encrypted_password`)
 VALUES
-	(1,'anna@gmail.com','Anna','Andersson','user','$2a$12$zv9C/FjFnAt68SW0ju11K.DPD9JlVwf0TfuXbFmHkMhVqKg8TqHoS');
+	(1,'anna@gmail.com','Anna','Andersson','user','$2a$12$OAAL5RNUjHYpmR8Hnq3EAO00pUQjnAlQjajZa4cyygk6YbGcGViW2');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
