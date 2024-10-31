@@ -84,8 +84,16 @@ https://www.base64-image.de
 * Album images from: https://bendodson.com/projects/itunes-artwork-finder
 
 ### Lighthouse score for the start page
-[The lighthouse scores for the start page](https://developer.chrome.com/docs/lighthouse) are good:
+[**Lighthouse**](https://developer.chrome.com/docs/lighthouse]) (built into [Crome DevTools](https://developer.chrome.com/docs/devtools)) is a tool for auditing performance, accessibility, best practices and SEO for web applications. 
+
+I run Lighthouse a couple of times and improved things suggested by the tool:
+* Added forgotten alt-tags to some images.
+* Improved link texts.
+* Waited for all resources to load before rendering HTML.
+ 
+After that the lighthouse scores for the start page became quite good:
 
 ![Lighthouse score](/images/lighthouse-results.jpg)
 
-Further speed improvements could be made by minifying JS and CSS before going to production.
+Further performance improvements could be made by:
+* Minifying and combining all JS and CSS before going to production.
