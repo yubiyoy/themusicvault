@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 let sumSLOC, sumKB, fileCount;
+let blankLines = 0, commentLines = 0;
 
 let basePath = path.join(__dirname, '..', '..', '..', '..');
 let files = fs.readdirSync(basePath, { recursive: true }).filter(x => !x.startsWith('target'));
@@ -21,11 +22,16 @@ files.filter(x => x.endsWith('.js')).filter(x => !x.includes('/libs/'))
   .map(x => stat(x, x.split('static/js/')[1])).filter(x => x);
 logFormatted();
 
+console.log('\nBlank lines', blankLines, 'Comment lines:', commentLines);
+
 function stat(filePath, niceName) {
   let content = fs.readFileSync(path.join(basePath, filePath), 'utf-8');
   if (niceName) {
     logFormatted(niceName, content.split('\n').length, (content.length / 1024).toFixed(1));
   }
+  blankLines += content.split('\n').filter(x => !x.trim()).length;
+  commentLines += content.split('\n').filter(x =>
+    x.trim().startsWith('//') || x.trim().startsWith('/*')).length;
   return niceName;
 }
 
