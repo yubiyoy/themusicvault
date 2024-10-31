@@ -86,7 +86,7 @@ https://www.base64-image.de
 ### Lighthouse score for the start page
 [**Lighthouse**](https://developer.chrome.com/docs/lighthouse]) (built into [Crome DevTools](https://developer.chrome.com/docs/devtools)) is a tool for auditing performance, accessibility, best practices and SEO for web applications. 
 
-I run Lighthouse a couple of times and improved things suggested by the tool:
+I ran Lighthouse a couple of times and improved things suggested by the tool:
 * Added forgotten alt-tags to some images.
 * Improved link texts.
 * Waited for all resources to load before rendering HTML.
