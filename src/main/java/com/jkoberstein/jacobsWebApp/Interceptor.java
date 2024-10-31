@@ -67,6 +67,7 @@ public class Interceptor implements HandlerInterceptor {
             var stream = new FileInputStream(getPathToIndexHtml());
             var indexHtml = IOUtils.toString(stream, StandardCharsets.UTF_8);
             indexHtml = indexHtml.replace("[comment]",JacobsWebApp.startupMessage);
+            response.setHeader("Content-Type","text/html");
             response.getWriter().write(indexHtml);
             if(log && statusCode == 404) {
                 System.out.println(" [GET] /index.html [statusCode: 200] (changed from 404 error)");
@@ -103,8 +104,7 @@ public class Interceptor implements HandlerInterceptor {
         url = url.replaceFirst("/api","");
         for (var rule : AclRules.whiteList){
             if(
-                method.equals(rule[0]) &&
-                userRole.equals(rule[2]) &&
+                method.equals(rule[0]) && userRole.equals(rule[2]) &&
                 (url.equals(rule[1]) || url.startsWith(rule[1]+"/"))
             ){
                 return true;

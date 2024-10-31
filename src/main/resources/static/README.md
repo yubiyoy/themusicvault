@@ -48,6 +48,9 @@ https://stackoverflow.com/questions/43693393/reload-static-content-spring-boot-a
 #### Serialize id field of entity
 https://www.baeldung.com/spring-data-rest-serialize-entity-id
 
+#### Enabling Gzip Compression in Spring
+https://dev.to/jackynote/supercharge-your-spring-boot-rest-api-with-gzip-compression-1a66
+
 #### Fetching from a REST-api on frontend
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 
