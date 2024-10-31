@@ -45,8 +45,9 @@ export function renderArtist({ id, name, description, base64image, albums }, sho
         </div>
       ` : ''}
       ${short ? `
-          <a href="/artist-info/${id}" class="mt-4 btn btn-secondary float-end">Read more</a>
-        ` : `
+          <a href="/artist-info/${id}" class="mt-4 btn btn-secondary float-end">
+            Read more <span class="read-more-detail">about ${name}</span>
+          </a>` : `
           <a href="/" class="mt-4 btn btn-secondary float-end">Back to all artists</a>
       `}
       <button class="removeArtist edit-mode-on mt-4 btn btn-danger float-end me-3">

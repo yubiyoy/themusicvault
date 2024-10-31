@@ -52,8 +52,8 @@ export function renderAlbum({ id, name, year, description, base64image, spotifyL
         </div>
       ` : ''}
       ${short ? `
-          <a href="/album-info/${id}" class="mt-4 btn btn-secondary float-end">Read more</a>
-        ` : `
+          <a href="/album-info/${id}" class="mt-4 btn btn-secondary float-end">Read more 
+            <span class="read-more-detail">about the album</span></a>` : `
           <a href="/albums" class="mt-4 btn btn-secondary float-end">Back to all albums</a>
       `}
       <button class="removeAlbum edit-mode-on mt-4 btn btn-danger float-end me-3">

@@ -9,16 +9,6 @@ import addRelations from './utils/addRelations.js';
 
 // Start the application
 async function start() {
-  // Basic html structure
-  document.body.innerHTML = `
-    <header></header>
-    <main class="container mt-5"></main>
-    <footer class="text-center py-3 mt-4">
-      © Jacob Koberstein Productions ${new Date().getFullYear()}
-    </footer>
-    <div class="toast-container"></div>
-    ${renderModalSkeleton()}
-  `;
   // Get the logged in user and store in globalThis
   globalThis.user = await getOne('login');
   // Get a list of all artists and store in globalThis
@@ -29,6 +19,16 @@ async function start() {
   // and add relations between artists and albums
   globalThis.artistXAlbums = await get('artistXAlbums')
   addRelations(globalThis.artistXAlbums);
+  // Basic html structure
+  document.body.innerHTML = `
+    <header></header>
+    <main class="container mt-5"></main>
+    <footer class="text-center py-3 mt-4">
+      © Jacob Koberstein Productions ${new Date().getFullYear()}
+    </footer>
+    <div class="toast-container"></div>
+    ${renderModalSkeleton()}
+  `;
   // Render the navbar
   renderNavBar();
   // Display 'page' depending on url - SPA frontend routing

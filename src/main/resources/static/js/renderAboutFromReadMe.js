@@ -4,7 +4,7 @@ import addEventListener from "./utils/addEventListener.js";
 const readMeAsHtml = globalThis.marked.parse(
   await (await fetch('/README.md')).text()
 ).replace(/<p>/, `
-  <img class="float-end d-none d-lg-block ms-5 mb-4" src="/images/pdf-preview.jpg"><p>
+  <img class="float-end d-none d-lg-block ms-5 mb-4" src="/images/pdf-preview.jpg" alt="Documentation"><p>
 `);
 
 // About page

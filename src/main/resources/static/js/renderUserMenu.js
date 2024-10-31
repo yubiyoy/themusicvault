@@ -15,14 +15,14 @@ export default function renderUserMenu() {
   return `
     <div class="dropdown user-profile">
       <a class="dropdown-toggle btn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="/images/person-circle.svg">
+        <img src="/images/person-circle.svg" alt="user-menu">
       </a>
       <ul class="dropdown-menu">
         ${loggedIn ? `
           <li><a class="dropdown-item" href="/register">${user.firstName} ${user.lastName}</a></li>
-          <li><a class="dropdown-item" >Logout</a></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
         ` : `
-          <li><a class="dropdown-item">Login</a></li>
+          <li><a class="dropdown-item" href="#">Login</a></li>
           <li><a class="dropdown-item" href="/register">Register</a></li>
         `}
       </ul>

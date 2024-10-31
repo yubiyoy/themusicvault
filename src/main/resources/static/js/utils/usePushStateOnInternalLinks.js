@@ -10,6 +10,6 @@ addEventListener('click', 'a', (link, event) => {
   pdfLink && link.setAttribute('target', '_blank');
   if (internal && !pdfLink) {
     event.preventDefault();
-    navigate(href);
+    href !== '#' && navigate(href);
   }
 });

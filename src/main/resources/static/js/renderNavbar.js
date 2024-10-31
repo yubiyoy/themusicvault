@@ -41,8 +41,8 @@ export default function renderNavBar() {
             `)}
             ${userRole === 'visitor' ? '' : /*html*/`
               <li class="nav-item toggle-edit-mode">
-                <a class="edit-mode-on nav-link px-5 px-lg-2">Hide edit buttons</a>
-                <a class="edit-mode-off nav-link px-5 px-lg-2">Show edit buttons</a>
+                <a href="#" class="edit-mode-on nav-link px-5 px-lg-2">Hide edit buttons</a>
+                <a href="#" class="edit-mode-off nav-link px-5 px-lg-2">Show edit buttons</a>
               </li>
             `}
           </ul>

@@ -1,4 +1,5 @@
 # About my web application:<br>The Music Vault
+## by Jacob Koberstein
 
 ### Documentation
 [I have documented](/pdfs/flow-spring-app.pdf/#navpanes=0&toolbar=0) the backend, the database, the REST-routes and the frontend in a schematic way:

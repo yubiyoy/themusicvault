@@ -32,3 +32,9 @@ footer {
 img[src="/images/404.png"] {
   width: 100%;
 }
+
+@media (max-width: 1199.98px) {
+  .read-more-detail {
+    display: none;
+  }
+}
