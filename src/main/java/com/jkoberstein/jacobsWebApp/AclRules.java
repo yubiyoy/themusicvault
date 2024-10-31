@@ -32,10 +32,10 @@ public abstract class AclRules {
             {"DELETE", "/albums", "user"},
             {"GET", "/albumsWithoutImages", "visitor"},
             {"GET", "/albumsWithoutImages", "user"},
-            {"GET", "/artistXalbums", "visitor"},
-            {"GET", "/artistXalbums", "user"},
-            {"POST", "/artistXalbums", "user"},
-            {"DELETE", "/artistXalbums", "user"}
+            {"GET", "/artistXAlbums", "visitor"},
+            {"GET", "/artistXAlbums", "user"},
+            {"POST", "/artistXAlbums", "user"},
+            {"DELETE", "/artistXAlbums", "user"}
     };
 
 }
