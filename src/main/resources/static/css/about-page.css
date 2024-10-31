@@ -29,6 +29,10 @@
     width: 50%;
   }
 
+  img[src="/images/lighthouse-results.jpg"] {
+    width: min(600px, 100%);
+  }
+
   margin-top: -3rem;
   margin-bottom:-2.5rem;
 

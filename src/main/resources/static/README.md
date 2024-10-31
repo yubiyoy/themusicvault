@@ -82,3 +82,10 @@ https://www.base64-image.de
 ### Data collected from
 * Text and images from https://www.discogs.com and https://prezi.com are used in the DB.
 * Album images from: https://bendodson.com/projects/itunes-artwork-finder
+
+### Lighthouse score for the start page
+[The lighthouse scores for the start page](https://developer.chrome.com/docs/lighthouse) are good:
+
+![Lighthouse score](/images/lighthouse-results.jpg)
+
+Further speed improvements could be made by minifying JS and CSS before going to production.
