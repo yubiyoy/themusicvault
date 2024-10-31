@@ -29,7 +29,7 @@ public class JacobsWebApp {
         props.put("spring.datasource.url", dataUrlNoDb);
 
         // If the database does not exist, import the db dump
-        SystemOutOnOff.off();
+        SystemOutOnOff.off(); // comment out to see errors during startup
         var dbExists = dbExists(dbName, props);
         if(!dbExists){
             var extraProps = new Properties();
