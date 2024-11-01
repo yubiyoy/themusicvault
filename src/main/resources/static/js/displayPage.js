@@ -2,7 +2,6 @@ import { renderArtists, renderArtist } from './renderArtists.js';
 import { renderAlbums, renderAlbum } from './renderAlbums.js';
 import renderArtistForm from './renderArtistForm.js';
 import renderAlbumForm from './renderAlbumForm.js';
-import renderAboutFromReadMe from './renderAboutFromReadMe.js';
 import renderUserForm from './renderUserForm.js';
 import render404 from './render404.js';
 import setActiveMenuChoice from './utils/setActiveMenuChoice.js';

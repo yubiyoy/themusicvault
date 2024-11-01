@@ -10,7 +10,6 @@ export default function renderNavBar() {
     'Albums': { route: '/albums', userRoles: ['visitor', 'user'] },
     'Add an artist': { route: '/add-artist', userRoles: ['user'] },
     'Add an album': { route: '/add-album', userRoles: ['user'] },
-
   };
 
   // check user role and remove choices not matching the user role
