@@ -10,7 +10,3 @@
 Logged in users have access to editing and deleting artists and albums. There is one user in the DB already: 
 * **anna@gmail.com** with the password **12345678**. 
 * You can easily register new users in the web application as well.
-
-# Documentation
-* [Schematics of the database, the backend, REST-routes and the frontend](src/main/resources/static/pdfs/flow-spring-app.pdf).
-* See the [README.md file](src/main/resources/static/README.md) in **src/resources/static** for more documentation!
